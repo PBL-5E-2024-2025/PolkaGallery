@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact page for Polka Gallery.">
+    <title>Polka Gallery Contact</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
+
+    <style>
+        .blue-banner {
+            margin-top: 100px; /* Memberikan ruang di bawah header */
+        }
+        .blue-banner {
+            background-color: #0C3790;
+            height: 200px;
+            width: 100%;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: relative;
+            margin-top: 80px; /* Pastikan ada ruang di bawah header */
+            z-index: 1;
+        }
+
+        .white-box {
+            background-color: #fff;
+            width: 100%;
+            max-width: 1000px;
+            height: 80px;
+            margin: -100px auto 20px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .white-box h2 {
+            color: #0C3790;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f1f2fa;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        button[type="submit"] {
+            background-color: #0C3790;
+            color: white;
+            padding: 20px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #8f98e7;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #F8F7EC;
+            padding: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .bot-banner {
+            background-color: #b5beff;
+            height: 400px; /* Tinggi banner bisa disesuaikan */
+            width: 100%;
+            display: flex;
+            justify-content: flex-start; /* Mengatur elemen di bagian kiri */
+            align-items: center; /* Menyusun elemen di tengah secara vertikal *//* Menambah ruang di dalam container */
+            box-sizing: border-box; /* Agar padding tidak melebihi ukuran */
+            margin-top: 50px;
+        }
+
+        .bot-banner .logo {
+            display: flex;
+            align-items: center; /* Menjaga agar logo dan judul sejajar secara vertikal */
+        }
+
+        .bot-banner .logo img {
+            height: 80px; /* Ukuran logo bisa diatur sesuai kebutuhan */
+            margin-right: 15px; /* Memberi jarak antara logo dan judul */
+        }
+
+        .bot-banner .logo-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px; /* Ukuran font judul */
+            font-weight: bold;
+            color: #0C3790;
+        }
+
+        .bot-banner .logo-title span {
+            display: inline-block;
+            vertical-align: middle; /* Menyusun teks di tengah jika ada beberapa baris */
+        }
+
+        .additional-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px; /* Sesuaikan ukuran font */
+            color: #0C3790; /* Sesuaikan warna teks */
+            margin-top: 15px; /* Tambahkan jarak antara judul dan teks tambahan */
+            text-align: center; /* Agar teks berada di tengah */
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>Polnep 
+                    <br>Karya</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" title="Home">Home</a></li>
+                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
+                <li><a href="./contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+            <a href="../User/sign-in.html" class="sign-in">Sign In</a>
+        </div>
+    </header> 
+
+    <!-- Persegi panjang biru -->
+    <div class="blue-banner"></div>
+
+    <!-- Container putih di atas persegi biru -->
+    <div class="white-box">
+        <h2>Pendapat Anda sangat berarti bagi kami. Bagikan komentar atau saran Anda untuk membantu kami menjadi lebih baik.</h2>
+    </div>
+
+    <!-- Form komentar di bawah container putih -->
+    <div class="container">
+        <form id="commentForm">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Nama" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Komentar</label>
+                <textarea id="comment" name="comment" rows="4" placeholder="Komentar" required></textarea>
+            </div>
+            <button type="submit">Kirim Komentar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Mengambil data form
+            const formData = new FormData(event.target);
+
+            const comment = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                comment: formData.get('comment'),
+                timestamp: new Date().toISOString()
+            };
+
+            var comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments.push(comment);
+
+            localStorage.setItem('comments', JSON.stringify(comments));
+
+            alert('Komentar Anda telah berhasil dikirim!');
+            document.getElementById('commentForm').reset();
+        });
+    </script>
+
+    <div class="bot-banner">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="logo-title">
+                <span>Polnep 
+                    <br>Karya</span>
+                <p class="additional-text">Website Showcase Project IT Polnep</p> <!-- Teks tambahan -->
+            </div>
+            
+    </div>
+</body>
+
+</html>
