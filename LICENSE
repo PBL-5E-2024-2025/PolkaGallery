@@ -1,5 +1,4 @@
-/*************  ✨ Codeium Command ⭐  *************/
-Copyright (c) 2022 Aplikasi Gallery Showcase Mahasiswa
+Copyright (c)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -18,4 +17,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-/******  e8652988-a1ff-4a4f-a624-00a432357763  *******/
+
+This software is licensed under the terms of the MIT license, but with the
+following additional restriction:
+
+* You may not use this software without the explicit written permission of
+  the copyright holder.
