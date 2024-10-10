@@ -8,7 +8,7 @@
     <title>Polka Gallery Contact</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="../Picture/logo_polka.ico">
 
     <style>
         .blue-banner {
@@ -99,48 +99,135 @@
             max-width: 1200px;
             margin: auto;
         }
+        
         .bot-banner {
-            background-color: #b5beff;
-            height: 400px; /* Tinggi banner bisa disesuaikan */
-            width: 100%;
-            display: flex;
-            justify-content: flex-start; /* Mengatur elemen di bagian kiri */
-            align-items: center; /* Menyusun elemen di tengah secara vertikal *//* Menambah ruang di dalam container */
-            box-sizing: border-box; /* Agar padding tidak melebihi ukuran */
-            margin-top: 50px;
-        }
-
-        .bot-banner .logo {
-            display: flex;
-            align-items: center; /* Menjaga agar logo dan judul sejajar secara vertikal */
-        }
-
-        .bot-banner .logo img {
-            height: 80px; /* Ukuran logo bisa diatur sesuai kebutuhan */
-            margin-right: 15px; /* Memberi jarak antara logo dan judul */
-        }
-
-        .bot-banner .logo-title {
+            background-color: #eee6fa; /* Light purple background */
+            padding: 40px 20px;
             font-family: 'Poppins', sans-serif;
-            font-size: 20px; /* Ukuran font judul */
-            font-weight: bold;
             color: #0C3790;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .bot-banner .logo-title span {
-            display: inline-block;
-            vertical-align: middle; /* Menyusun teks di tengah jika ada beberapa baris */
+        .blue-box {
+            background-color: #0C3790;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .address, .phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 70px;
+        }
+
+        .address img, .phone img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            padding: 15px;
+            background-color: white; /* Warna bingkai bulatan */
+            border-radius: 50%; /* Membuat bentuk lingkaran */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling untuk konten di bawah blue-box */
+        .content-sections {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .logo-section, .faqs-section, .hours-section {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .logo-section {
+            max-width: 250px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .logo-title {
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .additional-text {
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px; /* Sesuaikan ukuran font */
-            color: #0C3790; /* Sesuaikan warna teks */
-            margin-top: 15px; /* Tambahkan jarak antara judul dan teks tambahan */
-            text-align: center; /* Agar teks berada di tengah */
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
 
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .faqs-section {
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 90px;
+        }
+
+        .faqs-section ul {
+            list-style-type: none; 
+            padding-left: 0; 
+            font-size: 15px;
+        }
+
+        .hours-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-sections {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-section, .faqs-section, .hours-section {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .hours-section {
+                text-align: center;
+            }
+        }
 
     </style>
 </head>
@@ -223,17 +310,55 @@
         });
     </script>
 
-    <div class="bot-banner">
+<div class="bot-banner">
+    <div class="blue-box">
+        <div class="contact-info">
+            <div class="address">
+                <img src="./assets/image/location.png" alt="Location Icon">
+                <span>Jl. Jenderal Ahmad Yani, Kota Pontianak, 78124</span>
+            </div>
+            <div class="phone">
+                <img src="./assets/image/telephone-call.png" alt="Phone Icon">
+                <span>+62 561 736180</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-sections">
+        <div class="logo-section">
             <div class="logo">
                 <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                <div class="logo-title">
+                    <span>Polnep Karya</span>
+                </div>
             </div>
-            <div class="logo-title">
-                <span>Polnep 
-                    <br>Karya</span>
-                <p class="additional-text">Website Showcase Project IT Polnep</p> <!-- Teks tambahan -->
+            <p class="additional-text">Merupakan website untuk <br> menampilkan karya-karya milik <br> mahasiswa Prodi Teknik Informatika <br> Politeknik Negeri Pontianak</p>
+            <div class="social-icons">
+                <img src="./assets/image/email.png" alt="Email">
+                <img src="./assets/image/instagram.png" alt="Instagram">
+                <img src="./assets/image/facebook.png" alt="Facebook">
             </div>
-            
+        </div>
+
+        <div class="faqs-section">
+            <h3>FAQs</h3>
+            <ul>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Bantuan</a></li>
+                <li><a href="#">Cara Berkontribusi</a></li>
+                <li><a href="#">Cara Kolaborasi</a></li>
+            </ul>
+        </div>
+
+        <div class="hours-section">
+            <h3>Jam Kerja</h3>
+            <p>Senin - Kamis<br>07:00 -------- 16:00</p>
+            <p>Jumat<br>07:00 -------- 13:00</p>
+        </div>
     </div>
+</div>
+
+
 </body>
 
 </html>
