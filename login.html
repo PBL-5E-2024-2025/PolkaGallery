@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Atur halaman dengan latar belakang biru */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0C3790; /* Latar belakang biru */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Container untuk form login */
+        .login-container {
+            background-color: white; /* Warna putih untuk container */
+            border-radius: 10px;
+            width: 400px; /* Lebar form login */
+            padding: 40px; /* Ruang dalam container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk depth */
+        }
+
+        .login-logo {
+            display: block; /* Agar gambar ditampilkan sebagai blok */
+            margin: 0 auto 30px; /* Pusatkan gambar dengan margin bawah */
+            width: 100px; /* Atur lebar gambar sesuai kebutuhan */
+            height: auto; /* Pertahankan rasio aspek gambar */
+        }
+
+
+        /* Gaya untuk heading */
+        .login-container P {
+            margin-bottom: 10px;
+        } 
+
+        /* Gaya untuk input field */
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Gaya untuk tombol login */
+        .login-container button {
+            width: 98%;
+            padding: 15px;
+            background-color: #0C3790;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effect untuk tombol login */
+        .login-container button:hover {
+            background-color: #89b6e7;
+        }
+
+        /* Tambahkan sedikit ruang antara tombol dan teks */
+        .login-container .extra-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Gaya untuk link */
+        .login-container a {
+            color: #0C3790;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile" id="profile" style="display: none;">
+        <img src="default-profile.png" alt="Default Profile"> <!-- Ganti dengan path foto profil default -->
+        <h2 id="username-display">User</h2>
+    </div>
+
+    <div class="login-container">
+        <!-- Mengganti tulisan "Login" dengan gambar PNG -->
+        <img src="./assets/image/user (1).png" alt="Login Logo" class="login-logo"> <!-- Ganti dengan path ke gambar PNG Anda -->
+        <p>Login</p>
+        <!-- Form login -->
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <!-- Tambahan teks di bawah form -->
+        <div class="extra-text">
+            <p>Don't have an account? <a href="#">Sign up</a></p>
+        </div>
+    </div>
+    
+
+    <script>
+        // Menangani pengiriman form login
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Mencegah pengiriman form yang default
+            const username = document.getElementById('username').value;
+            
+            // Menampilkan profil dan menyembunyikan form login
+            document.getElementById('profile').style.display = 'flex';
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('username-display').innerText = username; // Menampilkan username
+        });
+    </script>
+
+</body>
+</html>
