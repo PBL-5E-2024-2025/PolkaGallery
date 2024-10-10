@@ -108,13 +108,19 @@ header nav ul li a:hover {
     color: white; /* Change text color on hover */
 }
 
+.showcase {
+    position: relative;
+    text-align: center;
+    color: white;
+    width: 100%;
+    background-color: #ffffff; /* Light background color */
+}
 .submit-content {
-    display: flex;
-    justify-content: flex-start; /* Menyelaraskan konten ke sisi kiri */
+    position: relative;
+    display: flex; /* Menyelaraskan konten ke sisi kiri */
     align-items: center;
     width: 100%;
     background-color: #0C3790;
-    /* Menghilangkan flex: 1 untuk .submit-text */
 }
 
 .submit-image {
@@ -143,8 +149,6 @@ header nav ul li a:hover {
     z-index: 0; /* Gambar berada di bawah overlay */
 }
 
-
-
 .submit-text {
     flex: 0 0 50%;
     padding: 20px;
@@ -157,7 +161,6 @@ header nav ul li a:hover {
     font-size: 1.5rem;
     letter-spacing: 0.3em;
     margin: 0;
-    /* Mengatur jarak antara judul dan elemen di bawahnya */
     margin-bottom: 10px; /* Sesuaikan nilai ini sesuai kebutuhan */
 }
 
@@ -190,6 +193,12 @@ header nav ul li a:hover {
     text-align: center;
     color: white;
     background-color: #ffffff; /* Light background color */
+}
+
+.image-showcase {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
 .showcase .overlay {
