@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact page for Polka Gallery.">
+    <title>Polka Gallery Contact</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../Picture/logo_polka.ico">
+
+    <style>
+        .blue-banner {
+            margin-top: 100px; /* Memberikan ruang di bawah header */
+        }
+        .blue-banner {
+            background-color: #0C3790;
+            height: 200px;
+            width: 100%;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            position: relative;
+            margin-top: 80px; /* Pastikan ada ruang di bawah header */
+            z-index: 1;
+        }
+
+        .white-box {
+            background-color: #fff;
+            width: 100%;
+            max-width: 1000px;
+            height: 80px;
+            margin: -100px auto 20px;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .white-box h2 {
+            color: #0C3790;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f1f2fa;
+        }
+
+        .form-group textarea {
+            resize: none;
+        }
+
+        button[type="submit"] {
+            background-color: #0C3790;
+            color: white;
+            padding: 20px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #8f98e7;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #F8F7EC;
+            padding: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .bot-banner {
+            background-color: #eee6fa; /* Light purple background */
+            padding: 40px 20px;
+            font-family: 'Poppins', sans-serif;
+            color: #0C3790;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .blue-box {
+            background-color: #0C3790;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .address, .phone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 70px;
+        }
+
+        .address img, .phone img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            padding: 15px;
+            background-color: white; /* Warna bingkai bulatan */
+            border-radius: 50%; /* Membuat bentuk lingkaran */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling untuk konten di bawah blue-box */
+        .content-sections {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .logo-section, .faqs-section, .hours-section {
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .logo-section {
+            max-width: 250px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo img {
+            height: 80px;
+            margin-right: 10px;
+        }
+
+        .logo-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .additional-text {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .social-icons img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .faqs-section {
+            text-align: center;
+            margin-top: 10px;
+            margin-left: 90px;
+        }
+
+        .faqs-section ul {
+            list-style-type: none; 
+            padding-left: 0; 
+            font-size: 15px;
+        }
+
+        .hours-section {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .content-sections {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo-section, .faqs-section, .hours-section {
+                margin: 20px 0;
+                text-align: center;
+            }
+
+            .hours-section {
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="sticky">
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>Polnep 
+                    <br>Karya</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./index.html" title="Home">Home</a></li>
+                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
+                <li><a href="./contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+            <a href="../User/sign-in.html" class="sign-in">Sign In</a>
+        </div>
+    </header> 
+
+    <!-- Persegi panjang biru -->
+    <div class="blue-banner"></div>
+
+    <!-- Container putih di atas persegi biru -->
+    <div class="white-box">
+        <h2>Pendapat Anda sangat berarti bagi kami. Bagikan komentar atau saran Anda untuk membantu kami menjadi lebih baik.</h2>
+    </div>
+
+    <!-- Form komentar di bawah container putih -->
+    <div class="container">
+        <form id="commentForm">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Nama" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="comment">Komentar</label>
+                <textarea id="comment" name="comment" rows="4" placeholder="Komentar" required></textarea>
+            </div>
+            <button type="submit">Kirim Komentar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('commentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Mengambil data form
+            const formData = new FormData(event.target);
+
+            const comment = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                comment: formData.get('comment'),
+                timestamp: new Date().toISOString()
+            };
+
+            var comments = JSON.parse(localStorage.getItem('comments')) || [];
+            comments.push(comment);
+
+            localStorage.setItem('comments', JSON.stringify(comments));
+
+            alert('Komentar Anda telah berhasil dikirim!');
+            document.getElementById('commentForm').reset();
+        });
+    </script>
+
+<div class="bot-banner">
+    <div class="blue-box">
+        <div class="contact-info">
+            <div class="address">
+                <img src="./assets/image/location.png" alt="Location Icon">
+                <span>Jl. Jenderal Ahmad Yani, Kota Pontianak, 78124</span>
+            </div>
+            <div class="phone">
+                <img src="./assets/image/telephone-call.png" alt="Phone Icon">
+                <span>+62 561 736180</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-sections">
+        <div class="logo-section">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                <div class="logo-title">
+                    <span>Polnep Karya</span>
+                </div>
+            </div>
+            <p class="additional-text">Merupakan website untuk <br> menampilkan karya-karya milik <br> mahasiswa Prodi Teknik Informatika <br> Politeknik Negeri Pontianak</p>
+            <div class="social-icons">
+                <img src="./assets/image/email.png" alt="Email">
+                <img src="./assets/image/instagram.png" alt="Instagram">
+                <img src="./assets/image/facebook.png" alt="Facebook">
+            </div>
+        </div>
+
+        <div class="faqs-section">
+            <h3>FAQs</h3>
+            <ul>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="#">Bantuan</a></li>
+                <li><a href="#">Cara Berkontribusi</a></li>
+                <li><a href="#">Cara Kolaborasi</a></li>
+            </ul>
+        </div>
+
+        <div class="hours-section">
+            <h3>Jam Kerja</h3>
+            <p>Senin - Kamis<br>07:00 -------- 16:00</p>
+            <p>Jumat<br>07:00 -------- 13:00</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
