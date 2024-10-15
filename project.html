@@ -6,6 +6,7 @@
     <title>Tampilan Proyek</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="../../Website/Home/Picture/polka pavicon.ico">
     <style>
         /* Mengatur gaya untuk halaman */
@@ -16,6 +17,28 @@
             padding-top: 100px;
             padding-bottom: 40px; /* Menambahkan ruang di atas untuk menghindari tumpang tindih dengan header */
         }
+
+        .icon-container {
+            position: absolute;
+            padding-top: 90px;
+            top: 110px; /* Atur posisi tepat di bawah navbar */
+            right: 20px; /* Posisi di sebelah kanan */
+            display: flex; /* Menampilkan ikon secara horizontal */
+            gap: 20px; /* Jarak antar ikon */
+            margin-right: 40px;
+        }
+
+        .love-icon, .mark-icon {
+            font-size: 30px; /* Ukuran ikon */
+            color: #0C3790; /* Warna ikon */
+            cursor: pointer;
+            transition: color 0.3s ease; /* Animasi ketika ikon disentuh */
+        }
+
+        .love-icon:hover, .mark-icon:hover {
+            color: #ff0000; /* Warna ikon saat dihover */
+        }
+
 
         /* Container untuk tampilan proyek */
         .project-container {
@@ -49,9 +72,10 @@
 
         /* Gaya untuk nama proyek */
         .project-name {
-            font-size: 35px; /* Ukuran font yang lebih besar */
-            font-weight: 700; /* Bold */
+            font-size: 25px; /* Ukuran font yang lebih besar */
+            font-weight: 600; /* Bold */
             margin-bottom: 10px; /* Ruang di bawah nama proyek */
+            margin-right: 100px;
         }
 
         /* Gaya untuk garis */
@@ -63,7 +87,7 @@
 
         /* Gaya untuk deskripsi proyek */
         .project-description {
-            font-size: 25px; /* Ukuran font deskripsi */
+            font-size: 20px; /* Ukuran font deskripsi */
             color: #555; /* Warna teks abu-abu gelap */
         }
 
@@ -130,11 +154,15 @@
         /* Bagian pengembang proyek */
         .pengembang-container {
             flex: 0 0 60%; /* Mengatur agar bagian pengembang mengambil 60% dari lebar kontainer */
+            display: flex;
+            flex-direction: column; /* Elemen pengembang ditampilkan secara vertikal */
+            align-items: flex-start; /* Mengatur elemen di sebelah kiri */
         }
 
         /* Bagian informasi */
         .informasi-container {
             flex: 0 0 35%; /* Mengatur agar bagian informasi mengambil 35% dari lebar kontainer */
+            margin-right: 30px;
         }
 
         .informasi {
@@ -146,13 +174,14 @@
             text-align: center;
             font-size: 20px;
             margin-top: 15px;
+            margin-bottom: 20px;
         }
         
         .info-item {
             display: flex;
             align-items: center; /* Menyusun elemen secara vertikal */
             margin-top: 15px;
-            margin-left: 40px; 
+            margin-left: 20px; 
         }
 
         .info-icon {
@@ -188,7 +217,33 @@
             text-decoration: underline;
         }
 
+        .sosial-media-container { /* Jarak dari atas */
+            flex: 0 0 35%; /* Mengatur agar bagian informasi mengambil 35% dari lebar kontainer */
+            margin-right: 30px;
+        }
 
+        .sosial-media {
+            width: 106%; /* Lebar penuh dalam kontainer */
+            background-color: #0C3790;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 40px;
+        }
+
+        .icon-sosial {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Jarak antar ikon */
+        }
+
+        .sosial-icon {
+            width: 40px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -227,6 +282,11 @@
         </div>
     </header>   
 
+    <div class="icon-container">
+        <i class="fas fa-heart love-icon"></i>
+        <i class="fas fa-bookmark mark-icon"></i>
+    </div>    
+
     <div class="project-container">
         <!-- Bagian kiri untuk gambar proyek -->
         <div class="project-image-container">
@@ -235,7 +295,7 @@
 
         <!-- Bagian kanan untuk nama proyek dan deskripsi -->
         <div class="project-details">
-            <div class="project-name">Nama Proyek Anda</div>
+            <div class="project-name">Nama Proyek Anda aku suka haha blabla dan suka dan suka dan ska dan haha haha hahaahhhh</div>
             <div class="garis"></div>
             <div class="project-description">
                 Deskripsi proyek ini memberikan rincian tentang tujuan dan hasil dari proyek tersebut. Ini dapat mencakup informasi seperti teknologi yang digunakan, tantangan yang dihadapi, dan pencapaian penting.
@@ -261,6 +321,7 @@
                 <img src="./assets/image/user.png" alt="gambar pengembang" class="project-profil">
                 <span>Nama Pengembang 3</span>
             </div>
+        <div class="pengembang-container"></div>
             <div class="pembimbing">
                 Dosen Pembimbing
             </div>
@@ -296,7 +357,21 @@
                     <a href="https://link-ke-project.com">Lihat Project</a>
                 </div>
             </div>
-        </div>
+
+            <div class="sosial-media-container">
+                <div class="sosial-media">
+                    Sosial Media:
+                </div>
+                <div class="icon-sosial">
+                    <a href="mailto:email@domain.com" target="_blank">
+                        <img src="./assets/image/email1.png" alt="Email" class="sosial-icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/profil-linkedin" target="_blank">
+                        <img src="./assets/image/linkedin.png" alt="LinkedIn" class="sosial-icon">
+                    </a>
+                </div>
+            </div>
+        </div>     
     </div>
     
 
