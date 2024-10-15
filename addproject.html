@@ -73,48 +73,122 @@
         }
 
         .dropdown {
-    position: relative;
-    width: 100%;
-}
+            position: relative;
+        }
 
-.dropdown-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    cursor: pointer;
-    border-radius: 4px;
-}
+        .dropbtn {
+            background-color: #fff;
+            color: #333;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 103%;
+            text-align: left;
+        }
 
-.arrow {
-    font-size: 16px;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            border: 1px solid #ccc;
+            z-index: 1;
+            max-height: 200px;
+            overflow-y: auto; /* Scroll jika lebih banyak item */
+            border-radius: 4px;
+        }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    border: 1px solid #ccc;
-    background-color: white;
-    z-index: 1;
-    max-height: 150px;
-    overflow-y: auto;
-    border-radius: 4px;
-}
+        .dropdown:hover .dropdown-content {
+            display: block; /* Tampilkan saat hover */
+        }
 
-.dropdown-content label {
-    display: block;
-    padding: 8px;
-    cursor: pointer;
-}
+        .custom-checkbox {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-.dropdown-content label:hover {
-    background-color: #f1f1f1;
-}
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0; /* Sembunyikan checkbox asli */
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #eee;
+            border-radius: 4px;
+        }
+
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #ddd; /* Ganti warna saat hover */
+        }
+
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #0C3790; /* Warna saat dicentang */
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .custom-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            width: 20%; /* Agar tombol sama besar dan rapat di tengah */
+            height: 50px;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            margin-left: 10px;
+        }
+
+        .delete-button {
+            background-color: #f86762;
+        }
+
+        .delete-button:hover {
+            background-color: #8a1a16;
+        }
+
+        .submit-button {
+            background-color: #2d5bb6;
+        }
+
+        .submit-button:hover {
+            background-color: #051f53;
+        }
+
     </style>
 </head>
 <body>
@@ -162,23 +236,76 @@
             <div class="form-group">
                 <label for="tools">Tools</label>
                 <div class="dropdown">
-                    <div class="dropdown-toggle" id="toolsInput">
-                        <span id="toolsText">Pilih Tools</span>
-                        <span class="arrow">&#9662;</span> <!-- Panah dropdown -->
-                    </div>
-                    <div class="dropdown-content">
-                        <label><input type="checkbox" value="Flutter"> Flutter</label>
-                        <label><input type="checkbox" value="React"> React</label>
-                        <label><input type="checkbox" value="Angular"> Angular</label>
-                        <label><input type="checkbox" value="Vue"> Vue</label>
-                        <label><input type="checkbox" value="Dart"> Dart</label>
+                    <button type="button" class="dropbtn" id="dropdownButton">Pilih Tools</button>
+                    <div class="dropdown-content" id="dropdownContent">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="Dart" checked>
+                            <span class="checkmark"></span>
+                            Dart
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="HTML & CSS">
+                            <span class="checkmark"></span>
+                            HTML & CSS
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="JavaScript">
+                            <span class="checkmark"></span>
+                            JavaScript
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="CorelDraw">
+                            <span class="checkmark"></span>
+                            CorelDraw
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="Photoshop">
+                            <span class="checkmark"></span>
+                            Photoshop
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="Figma">
+                            <span class="checkmark"></span>
+                            Figma
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="Supabase">
+                            <span class="checkmark"></span>
+                            Supabase
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" value="Node JS">
+                            <span class="checkmark"></span>
+                            Node JS
+                        </label>
                     </div>
                 </div>
             </div>
-            
-            <button type="submit">Kirim Komentar</button>
-        </form>
-    </div>
     
+            <div class="form-group">
+                <label for="tahun">Tahun</label>
+                <input type="text" id="tahun" name="tahun" placeholder="Tahun" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="kategori">Kategori</label>
+                <input type="text" id="kategori" name="kategori" placeholder="Kategori" required>
+            </div>
+    
+            <div class="form-group">
+                <label>Link Project</label>
+                <input type="text" id="linkProject" name="linkProject" placeholder="Link Project" required>
+            </div>
+    
+            <div class="form-group">
+                <label>Kontak Mahasiswa</label>
+                <input type="text" id="kontak" name="kontak" placeholder="Email/Linkedin" required>
+            </div>
+
+            <div class="button-container">
+                <button type="button" class="delete-button">Hapus Data</button>
+                <button type="submit" class="submit-button">Kirim</button>
+            </div>
+    </div>
 </body>
 </html>
