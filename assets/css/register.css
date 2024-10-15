@@ -1,0 +1,79 @@
+        /* Atur halaman dengan latar belakang biru */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0C3790; /* Latar belakang biru */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Container untuk form registrasi */
+        .register-container {
+            background-color: white; /* Warna putih untuk container */
+            border-radius: 10px;
+            width: 400px; /* Lebar form registrasi */
+            padding: 40px; /* Ruang dalam container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk depth */
+        }
+
+        .register-logo {
+            display: block; /* Agar gambar ditampilkan sebagai blok */
+            margin: 0 auto 30px; /* Pusatkan gambar dengan margin bawah */
+            width: 100px; /* Atur lebar gambar sesuai kebutuhan */
+            height: auto; /* Pertahankan rasio aspek gambar */
+        }
+
+        /* Gaya untuk heading */
+        .register-container p {
+            margin-bottom: 10px;
+        }
+
+        /* Gaya untuk input field */
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="email"] {
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        /* Gaya untuk tombol register */
+        .register-container button {
+            width: 98%;
+            padding: 15px;
+            background-color: #0C3790;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Hover effect untuk tombol register */
+        .register-container button:hover {
+            background-color: #89b6e7;
+        }
+
+        /* Tambahkan sedikit ruang antara tombol dan teks */
+        .register-container .extra-text {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Gaya untuk link */
+        .register-container a {
+            color: #0C3790;
+            text-decoration: none;
+        }
+
+        .register-container a:hover {
+            text-decoration: underline;
+        }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Showcase of projects from Politeknik Negeri Pontianak students.">
+    <title>Politeknik Project Showcase</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <style>
+        /* Tombol Kirim Proyek */
+        .kirim-btn {
+            background-color: #0C3790;
+            color: white;
+            padding: 10px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .kirim-btn:hover {
+            background-color: #002f70;
+        }
+
+        /* Popup container */
+        .popup-container {
+            display: none; /* Popup tersembunyi secara default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Background transparan hitam */
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #ffffff;
+            margin: 15% auto; /* Memposisikan popup di tengah */
+            padding: 20px;
+            border: 1px solid #0C3790;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Tombol Close */
+        .close-popup {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            color: #000;
+        }
+
+        /* Pilihan proyek */
+        .project-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        /* Styling untuk kotak proyek */
+        .project-box {
+            background-color: #0C3790;
+            border-radius: 10px;
+            color: #ffffff;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05); /* Animasi zoom saat hover */
+        }
+
+        /* Styling untuk gambar ikon di dalam kotak proyek */
+        .project-icon {
+            width: 50px; /* Ukuran lebar gambar */
+            height: 50px; /* Ukuran tinggi gambar */
+            margin-bottom: 10px; /* Jarak antara gambar dan teks */
+        }
+
+        /* Styling untuk teks dalam kotak proyek */
+        .project-box p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>Polnep 
+                    <br>Karya</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html" title="Home">Home</a></li>
+                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
+                <li><a href="./contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+            <div class="profile-dropdown" id="profileDropdown" style="display:none;">
+                <img src="./assets/image/user.jpg" alt="Profile" class="profile-img" id="profileImg">
+                <div class="dropdown-content" id="dropdownContent">
+                    <a href="#" id="cekProfil">Cek Profil</a>
+                    <a href="#" id="kirimProyek">Kirim Proyek</a>
+                    <a href="#" id="logout">Keluar</a>
+                </div>
+            </div>
+            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a>
+            </div>
+        </div>
+    </header>   
+     
+    
+    <main>
+        <section class="showcase">
+            <img src="./assets/image/polnep.jpeg" alt="Politeknik Negeri Pontianak" class="image-showcase">
+            <div class="overlay">
+                <h1>Politeknik Project Showcase</h1>
+                <a href="./gallery.html" class="button"><strong>Lihat Selengkapnya</strong></a>
+            </div>
+        </section>        
+        <section class="projects">
+            <div class="project">
+                <h2><a href="/Website/project/Mahasiswa/Kiki.html" class="project-link">Project Mahasiswa 1<span class="arrow"></span></a></h2>
+                <figure>
+                    <img src="/Website/project/Mahasiswa/picture/Website Portofolio Kiki.png" alt="Ramadhan Salihan Pratama">
+                    <figcaption>Rizky Puspita Sari<br>D3 Teknik Informatika</figcaption>
+                </figure>
+            </div>
+            <div class="project">
+                <h2><a href="/Website/project/Mahasiswa/era.html" class="project-link">Project Mahasiswa 2<span class="arrow"></span></a></h2>
+                <figure>
+                    <img src="/Website/project/Mahasiswa/picture/Website Era Mockup.png" alt="Tim Horee">
+                    <figcaption>Helio Caesar<br>D3 Teknik Informatika</figcaption>
+                </figure>
+            </div>
+            <div class="project">
+                <h2><a href="/Website/project/Pbl/galeri.html" class="project-link">Project PBL<span class="arrow"></span></a></h2>
+                <figure>
+                    <img src="/Website/project/Pbl/picture/Aplikasi Gallery App.png" alt="Tim Onar Project">
+                    <figcaption>Dika Muzdalifah<br> D3 Teknik Informatika</figcaption>
+                </figure>
+            </div>
+        <!-- New Section -->
+        <section class="submit-container">
+            <div class="submit-content">
+                <div class="submit-text">
+                    <h2>K I R I M K A N &nbsp; K A R Y A M U</h2>
+                    <p>Pamerkan hasil kreativitasmu dan inspirasi orang lain dengan karyamu!</p>
+                    <!-- Tombol Kirim Proyek, ubah href ke id dari popup -->
+                    <button id="kirimProyekBtn" class="submit-button">Disini<span class="arrow">&rarr;</span></button>
+                </div>
+                <div class="submit-image">
+                    <img src="./assets/image/polnep1.jpg" alt="Submit Your Work">
+                </div>
+            </div>
+        </section>
+
+        <!-- Popup container -->
+        <div id="kirimProyekPopup" class="popup-container">
+            <div class="popup-content">
+                <span class="close-popup" id="closePopup">&times;</span>
+                <h2>Kirim Proyek</h2>
+                <p>Silakan pilih salah satu proyek yang akan dikirim:</p>
+
+                <!-- Tiga kotak pilihan proyek dengan gambar -->
+                <div class="project-options">
+                    <div class="project-box" id="pblBox">
+                        <img src="./assets/image/pbl-icon.png" alt="Proyek PBL" class="project-icon">
+                        <p>PBL</p>
+                    </div>
+                    <div class="project-box" id="lombaBox">
+                        <img src="./assets/image/lomba-icon.png" alt="Proyek Lomba" class="project-icon">
+                        <p>Lomba</p>
+                    </div>
+                    <div class="project-box" id="taBox">
+                        <img src="./assets/image/ta-icon.png" alt="Tugas Akhir" class="project-icon">
+                        <p>TA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Ambil elemen-elemen yang dibutuhkan
+            const kirimProyekBtn = document.getElementById('kirimProyekBtn');
+            const kirimProyekPopup = document.getElementById('kirimProyekPopup');
+            const closePopup = document.getElementById('closePopup');
+            
+            // Kotak proyek
+            const pblBox = document.getElementById('pblBox');
+            const lombaBox = document.getElementById('lombaBox');
+            const taBox = document.getElementById('taBox');
+        
+            // Ketika tombol 'Kirim Proyek' diklik, tampilkan popup
+            kirimProyekBtn.addEventListener('click', function() {
+                kirimProyekPopup.style.display = 'block';
+            });
+        
+            // Ketika tombol 'X' diklik, sembunyikan popup
+            closePopup.addEventListener('click', function() {
+                kirimProyekPopup.style.display = 'none';
+            });
+        
+            // Ketika pengguna klik di luar popup, sembunyikan popup
+            window.onclick = function(event) {
+                if (event.target === kirimProyekPopup) {
+                    kirimProyekPopup.style.display = 'none';
+                }
+            }
+        
+            // Event listener untuk kotak proyek
+            pblBox.addEventListener('click', function() {
+                window.location.href = "pbl-project-page.html"; // Ganti dengan URL halaman PBL
+            });
+        
+            lombaBox.addEventListener('click', function() {
+                window.location.href = "lomba-project-page.html"; // Ganti dengan URL halaman Lomba
+            });
+        
+            taBox.addEventListener('click', function() {
+                window.location.href = "ta-project-page.html"; // Ganti dengan URL halaman TA
+            });
+        </script>
+              
+        
+    </main>
+</body>
+</html>

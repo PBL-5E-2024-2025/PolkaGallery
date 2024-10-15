@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@supabase/supabase-js"></script> <!-- Load Supabase Script -->
     <style>
         /* Atur halaman dengan latar belakang biru */
         body {
@@ -34,11 +35,10 @@
             height: auto; /* Pertahankan rasio aspek gambar */
         }
 
-
         /* Gaya untuk heading */
-        .login-container P {
+        .login-container p {
             margin-bottom: 10px;
-        } 
+        }
 
         /* Gaya untuk input field */
         .login-container input[type="text"],
@@ -94,33 +94,56 @@
         <h2 id="username-display">User</h2>
     </div>
 
-    <div class="login-container">
+    <div class="login-container" id="login-container">
         <!-- Mengganti tulisan "Login" dengan gambar PNG -->
         <img src="./assets/image/user (1).png" alt="Login Logo" class="login-logo"> <!-- Ganti dengan path ke gambar PNG Anda -->
         <p>Login</p>
         <!-- Form login -->
-        <form>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
             <button type="submit">Login</button>
         </form>
         <!-- Tambahan teks di bawah form -->
         <div class="extra-text">
-            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <p>Don't have an account? <a href="register.html">Sign up</a></p>
         </div>
     </div>
     
-
     <script>
-        // Menangani pengiriman form login
-        document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Mencegah pengiriman form yang default
-            const username = document.getElementById('username').value;
-            
-            // Menampilkan profil dan menyembunyikan form login
-            document.getElementById('profile').style.display = 'flex';
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('username-display').innerText = username; // Menampilkan username
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Supabase client
+            const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+            const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+            const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    
+            // Handle form submission
+            document.getElementById('login-form').addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent form from submitting
+                
+                // Get input values
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+    
+                // Query Supabase to check for matching username and password
+                const { data, error } = await supabaseClient
+                    .from('users')
+                    .select('*')
+                    .eq('username', username)
+                    .eq('password', password);
+    
+                if (error) {
+                    console.error('Error fetching data:', error.message);
+                    alert('Login failed. Please try again.');
+                } else if (data.length > 0) {
+                    // Login successful, redirect to dashboard
+                    alert('Login successful! Redirecting to dashboard...');
+                    window.location.href = "dashboard.html"; // Redirect to dashboard
+                } else {
+                    // Login failed, no match found
+                    alert('Invalid username or password.');
+                }
+            });
         });
     </script>
 
