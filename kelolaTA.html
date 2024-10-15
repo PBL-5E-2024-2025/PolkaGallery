@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Proyek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styledashboard.css">
+    <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
+    <style>
+        main {
+            padding-top: 20px; /* Adjust this value based on your header's height */
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>olka Gallery Admin</span>
+            </div>
+        </div>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+        
+            <!-- Profil Admin dengan Dropdown -->
+            <div class="profile-container">
+                <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="#">Profil</a>
+                    <a href="#">Pengaturan</a>
+                    <a href="#">Keluar</a>
+                </div>
+            </div>
+        </div>        
+    </header>
+
+    <main>
+        <h2>Kelola Tugas Akhir</h2>
+        <button class="button" onclick="openAddProjectModal()">Tambah Proyek</button>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama Proyek</th>
+                    <th>Deskripsi</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Selesai</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody id="project-table-body">
+                <!-- Data proyek akan dimasukkan di sini melalui JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <!-- Modal untuk menambahkan proyek -->
+    <div id="addProjectModal" style="display:none;">
+        <h3>Tambah TA</h3>
+        <label for="projectName">Nama Proyek:</label>
+        <input type="text" id="projectName" placeholder="Nama Proyek">
+        <label for="projectDescription">Deskripsi:</label>
+        <input type="text" id="projectDescription" placeholder="Deskripsi">
+        <label for="startDate">Tanggal Mulai:</label>
+        <input type="date" id="startDate">
+        <label for="endDate">Tanggal Selesai:</label>
+        <input type="date" id="endDate">
+        <button class="button" onclick="addProject()">Simpan</button>
+        <button class="button" onclick="closeAddProjectModal()">Batal</button>
+    </div>
+
+    <script>
+        let projects = [];
+        let projectId = 1; // Untuk memberikan ID unik
+
+        function openAddProjectModal() {
+            document.getElementById('addProjectModal').style.display = 'block';
+        }
+
+        function closeAddProjectModal() {
+            document.getElementById('addProjectModal').style.display = 'none';
+        }
+
+        function addProject() {
+            const projectName = document.getElementById('projectName').value;
+            const projectDescription = document.getElementById('projectDescription').value;
+            const startDate = document.getElementById('startDate').value;
+            const endDate = document.getElementById('endDate').value;
+
+            const newProject = {
+                id: projectId++,
+                name: projectName,
+                description: projectDescription,
+                startDate: startDate,
+                endDate: endDate
+            };
+
+            projects.push(newProject);
+            updateProjectTable();
+            closeAddProjectModal();
+        }
+
+        function updateProjectTable() {
+            const tableBody = document.getElementById('project-table-body');
+            tableBody.innerHTML = '';
+
+            projects.forEach(project => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${project.id}</td>
+                    <td>${project.name}</td>
+                    <td>${project.description}</td>
+                    <td>${project.startDate}</td>
+                    <td>${project.endDate}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="button" onclick="editProject(${project.id})">Edit</button>
+                            <button class="button delete" onclick="deleteProject(${project.id})">Hapus</button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function editProject(id) {
+            // Implementasi edit proyek
+            alert(`Edit proyek dengan ID: ${id}`);
+        }
+
+        function deleteProject(id) {
+            projects = projects.filter(project => project.id !== id);
+            updateProjectTable();
+        }
+    </script>
+</body>
+</html>
