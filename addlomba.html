@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Add Lomba</title>
     <style>
         .blue-banner {
             background-color: #0C3790;
@@ -72,12 +72,30 @@
             resize: none;
         }
 
+        select {
+            width: 103%;
+            height: 50px;
+            padding: 10px;
+            padding-right: 40px; /* Ruang untuk panah di ujung kanan */
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            appearance: none; /* Hilangkan tampilan default dropdown */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
         .dropdown {
             position: relative;
+            
         }
 
         .dropbtn {
             background-color: #fff;
+            height: 50px;
+            font-size: 15px;
             color: #333;
             padding: 10px;
             border: 1px solid #ccc;
@@ -85,6 +103,7 @@
             cursor: pointer;
             width: 103%;
             text-align: left;
+            font-family: 'Poppins', sans-serif;
         }
 
         .dropdown-content {
@@ -197,7 +216,7 @@
 
     <!-- Container putih di atas persegi biru -->
     <div class="white-box">
-        <h2>Proyek PBL</h2>
+        <h2>Proyek Lomba</h2>
     </div>
 
     <!-- Form komentar di bawah container putih -->
@@ -231,6 +250,27 @@
             <div class="form-group">
                 <label for="dosen">Dosen Pembimbing</label>
                 <input type="text" id="dosen" name="dosen" placeholder="Dosen Pembimbing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skala">Skala Lomba</label>
+                <select id="skala" name="skala" required>
+                    <option value="" disabled selected>Pilih Skala Lomba</option>
+                    <option value="Lokal">Lokal</option>
+                    <option value="Nasional">Nasional</option>
+                    <option value="Internasional">Internasional</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="peringkat">Peringkat</label>
+                <select name="peringkat" id="peringkat" required>
+                    <option value="" disabled>Peringkat</option>
+                    <option value="peringkat1">Juara 1</option>
+                    <option value="peringkat2">Juara 2</option>
+                    <option value="peringkat3">Juara 3</option>
+                </select>
+
             </div>
 
             <div class="form-group">
