@@ -38,21 +38,22 @@
                     <a href="#">Keluar</a>
                 </div>
             </div>
-        </div>        
+        </div>
+        
     </header>
 
     <main>
-        <h2>Kelola Proyek</h2>
+        <h2>Kelola Tugas Akhir</h2>
         <button class="button" onclick="openAddProjectModal()">Tambah Proyek</button>
         
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nama Proyek</th>
+                    <th>Nama Lomba</th>
+                    <th>Mahasiswa</th>
                     <th>Deskripsi</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Selesai</th>
+                    <th>Peringkat</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -64,7 +65,7 @@
 
     <!-- Modal untuk menambahkan proyek -->
     <div id="addProjectModal" style="display:none;">
-        <h3>Tambah Proyek</h3>
+        <h3>Tambah Lomba</h3>
         <label for="projectName">Nama Proyek:</label>
         <input type="text" id="projectName" placeholder="Nama Proyek">
         <label for="projectDescription">Deskripsi:</label>
@@ -141,16 +142,17 @@
             updateProjectTable();
         }
     </script>
+
     <script>
         // Ambil elemen profil dan dropdown
         const profilePic = document.getElementById('profile-pic');
         const dropdownContent = document.getElementById('dropdown-content');
-    
+
         // Event listener untuk toggle dropdown saat gambar profil diklik
         profilePic.addEventListener('click', function() {
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         });
-    
+
         // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
         window.onclick = function(event) {
             if (!event.target.matches('#profile-pic')) {
