@@ -63,7 +63,7 @@
             </a>
         </div>
         <div class="manage-box">
-            <a href="#">
+            <a href="kelolalomba.html">
                 <img src="./assets/image/lomba-icon.png" alt="Manage Lomba">
                 <p>KELOLA LOMBA</p>
             </a>
@@ -167,6 +167,24 @@
     document.addEventListener('DOMContentLoaded', () => {
         getUsername();
     });
+    </script>
+
+    <script>
+        // Ambil elemen profil dan dropdown
+        const profilePic = document.getElementById('profile-pic');
+        const dropdownContent = document.getElementById('dropdown-content');
+
+        // Event listener untuk toggle dropdown saat gambar profil diklik
+        profilePic.addEventListener('click', function() {
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
+        window.onclick = function(event) {
+            if (!event.target.matches('#profile-pic')) {
+                dropdownContent.style.display = 'none';
+            }
+        }
     </script>
 
 </body>
