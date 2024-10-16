@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/styledashboard.css"> <!-- Skip CSS untuk saat ini -->
+    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
+    <link rel="stylesheet" href="./assets/css/styledashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> <!-- Supabase SDK -->
 </head>
+
 <body>
     <header class="sticky">
         <div class="logo-title">
@@ -22,38 +26,36 @@
                 <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
                 <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
             </div>
-
+        
             <!-- Profil Admin dengan Dropdown -->
             <div class="profile-container">
                 <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
-                <span id="username-display" style="margin-left: 10px; font-family: 'Poppins', sans-serif;"></span> <!-- Display Username -->
+                <span class="user-info" id="username">Guest</span> <!-- Nama pengguna yang login -->
                 <div class="dropdown-content" id="dropdown-content">
                     <a href="#">Lihat Profil</a>
-                    <a href="#">Keluar</a>
+                    <a href="#" id="logout">Keluar</a>
                 </div>
             </div>
         </div>
+        
     </header>
-
     <div class="blue-banner"></div>
-
     <div class="statistics-container">
         <div class="stat-box">
             <div class="stat-title">Total PBL</div>
-            <div class="stat-number" id="totalPBL">50</div> <!-- Replace 50 with dynamic data -->
+            <div class="stat-number" id="totalPBL">50</div>
         </div>
         <div class="stat-box">
             <div class="stat-title">Total Lomba</div>
-            <div class="stat-number" id="totalCompetitions">30</div> <!-- Replace 30 with dynamic data -->
+            <div class="stat-number" id="totalCompetitions">30</div>
         </div>
         <div class="stat-box">
             <div class="stat-title">Total Tugas Akhir</div>
-            <div class="stat-number" id="totalFinalProjects">20</div> <!-- Replace 20 with dynamic data -->
+            <div class="stat-number" id="totalFinalProjects">20</div>
         </div>
     </div>
 
     <div class="manage-container">
-        <!-- First row: Three boxes with PNG icons -->
         <div class="manage-box">
             <a href="./kelolaproject.html">
                 <img src="./assets/image/pbl-icon.png" alt="Manage PBL">
@@ -72,8 +74,7 @@
                 <P>KELOLA TA</P>
             </a>
         </div>
-
-        <!-- Second row: Two boxes with PNG icons -->
+    
         <div class="manage-box ">
             <a href="#">
                 <img src="./assets/image/komentar-icon.png" alt="Komentar">
@@ -92,67 +93,80 @@
         <canvas id="visitorChart"></canvas>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script>
-        // Inisialisasi Supabase
-        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
-        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-
-        // Ambil data pengguna yang login
-        async function getUser() {
-            const { data: { session } } = await supabaseClient.auth.getSession();
-            
-            if (session) {
-                const userEmail = session.user.email;
-                document.getElementById('username-display').textContent = userEmail;
-            } else {
-                // Jika tidak ada sesi login, arahkan pengguna ke halaman login
-                window.location.href = './login.html';
-            }
-        }
-
-        // Panggil fungsi untuk mengambil dan menampilkan nama pengguna
-        getUser();
-
-        // Ambil context dari elemen canvas untuk chart
+        // Ambil context dari elemen canvas
         const ctx = document.getElementById('visitorChart').getContext('2d');
+    
+        // Membuat diagram menggunakan Chart.js
         const visitorChart = new Chart(ctx, {
-            type: 'line',
+            type: 'line', // Tipe diagram (bisa juga bar, pie, dll)
             data: {
-                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'],
+                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'], // Bulan atau kategori lain
                 datasets: [{
                     label: 'Jumlah Pengunjung',
-                    data: [500, 1000, 750, 1500, 2000, 1800],
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 2
+                    data: [500, 1000, 750, 1500, 2000, 1800], // Ganti dengan data pengunjung
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Warna background area
+                    borderColor: 'rgba(54, 162, 235, 1)', // Warna garis
+                    borderWidth: 2 // Ketebalan garis
                 }]
             },
             options: {
                 responsive: true,
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true // Memulai dari nilai 0 di sumbu Y
                     }
                 }
             }
         });
-
-        // Event listener untuk toggle dropdown saat gambar profil diklik
-        const profilePic = document.getElementById('profile-pic');
-        const dropdownContent = document.getElementById('dropdown-content');
-        profilePic.addEventListener('click', function() {
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
-
-        // Menutup dropdown saat klik di luar elemen dropdown
-        window.onclick = function(event) {
-            if (!event.target.matches('#profile-pic')) {
-                dropdownContent.style.display = 'none';
-            }
-        }
     </script>
+
+<script>
+    // Inisialisasi Supabase
+    const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co'; // Supabase URL Anda
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0'; // Supabase key Anda
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    // Fungsi untuk mendapatkan username dari pengguna yang login
+    async function getUsername() {
+        // Ambil sesi login dari Supabase
+        const { data: { session }, error } = await supabaseClient.auth.getSession();
+    
+        if (error) {
+            console.error("Error fetching session:", error);
+            document.getElementById('username').textContent = '';
+            return;
+        }
+    
+        if (session) {
+            const userId = session.user.id; // ID pengguna yang sedang login
+    
+            // Ambil data user dari tabel 'users' berdasarkan user ID
+            const { data: userProfile, error: profileError } = await supabaseClient
+                .from('users')
+                .select('username')
+                .eq('id', userId) // Mencocokkan dengan ID pengguna yang sedang login
+                .single(); // Ambil satu record
+    
+            if (profileError) {
+                console.error('Error fetching user profile:', profileError);
+                document.getElementById('username').textContent = '';
+            } else {
+                console.log('User Profile:', userProfile);
+                // Menampilkan username yang diambil dari tabel 'users'
+                document.getElementById('username').textContent = userProfile.username || '';
+            }
+        } else {
+            document.getElementById('username').textContent = '';
+        }
+    }
+    
+    // Memanggil fungsi getUsername setelah halaman dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+        getUsername();
+    });
+    </script>
+    
+    
 </body>
 </html>
