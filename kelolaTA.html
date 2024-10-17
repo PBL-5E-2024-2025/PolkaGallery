@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         main {
             padding-top: 20px; /* Adjust this value based on your header's height */
@@ -41,18 +42,22 @@
     </header>
 
     <main>
-        <h2>Kelola Tugas Akhir</h2>
-        <button class="button" onclick="openAddProjectModal()">Tambah Proyek</button>
-        
+        <h2>Kelola Tugas Akhir</h2>        
         <table>
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nama Proyek</th>
                     <th>Deskripsi</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Selesai</th>
+                    <th>Tahun</th>
+                    <th>Jenis Project</th>
+                    <th>Link Project</th>
+                    <th>Link Video</th>
+                    <th>Gambar</th>
+                    <th>Tools</th>
+                    <th>Kontak Mahasiswa</th>
                     <th>Aksi</th>
+                    <th>Nama Mahasiswa</th>
                 </tr>
             </thead>
             <tbody id="project-table-body">
@@ -77,70 +82,6 @@
     </div>
 
     <script>
-        let projects = [];
-        let projectId = 1; // Untuk memberikan ID unik
-
-        function openAddProjectModal() {
-            document.getElementById('addProjectModal').style.display = 'block';
-        }
-
-        function closeAddProjectModal() {
-            document.getElementById('addProjectModal').style.display = 'none';
-        }
-
-        function addProject() {
-            const projectName = document.getElementById('projectName').value;
-            const projectDescription = document.getElementById('projectDescription').value;
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-
-            const newProject = {
-                id: projectId++,
-                name: projectName,
-                description: projectDescription,
-                startDate: startDate,
-                endDate: endDate
-            };
-
-            projects.push(newProject);
-            updateProjectTable();
-            closeAddProjectModal();
-        }
-
-        function updateProjectTable() {
-            const tableBody = document.getElementById('project-table-body');
-            tableBody.innerHTML = '';
-
-            projects.forEach(project => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${project.id}</td>
-                    <td>${project.name}</td>
-                    <td>${project.description}</td>
-                    <td>${project.startDate}</td>
-                    <td>${project.endDate}</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="button" onclick="editProject(${project.id})">Edit</button>
-                            <button class="button delete" onclick="deleteProject(${project.id})">Hapus</button>
-                        </div>
-                    </td>
-                `;
-                tableBody.appendChild(row);
-            });
-        }
-
-        function editProject(id) {
-            // Implementasi edit proyek
-            alert(`Edit proyek dengan ID: ${id}`);
-        }
-
-        function deleteProject(id) {
-            projects = projects.filter(project => project.id !== id);
-            updateProjectTable();
-        }
-    </script>
-    <script>
         // Ambil elemen profil dan dropdown
         const profilePic = document.getElementById('profile-pic');
         const dropdownContent = document.getElementById('dropdown-content');
@@ -157,5 +98,6 @@
             }
         }
     </script>
+    <script src="./kelolaTA.js"></script>
 </body>
 </html>
