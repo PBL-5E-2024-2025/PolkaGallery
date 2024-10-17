@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchProjects() {
     const { data, error } = await supabaseClient
         .from('project')
-        .select('id_project, judul, deskripsi, tahun, jenis_project, id_tim, link_project, link_video, url_image, tools, kontak_mahasiswa');
-    
+        .select('id_project, judul, deskripsi, tahun, jenis_project, id_tim, link_project, link_video, url_image, tools, kontak_mahasiswa')
+        .eq('jenis_project', 'PBL'); // Add this line to filter projects by 'PBL'
+
     if (error) {
         console.error('Error fetching projects:', error);
         return;
@@ -36,7 +37,8 @@ async function fetchProjects() {
             <td>${project.tools}</td>
             <td>${project.kontak_mahasiswa}</td>
             <td><button onclick="editProject(${project.id_project})">Edit</button>
-                <button onclick="deleteProject(${project.id_project})">Hapus</button></td>
+                <button onclick="deleteProject(${project.id_project})">Hapus</button>
+                <button onclick="postProject(${project.id_project})">Post</button></td>
         `;
         
         tableBody.appendChild(row);
