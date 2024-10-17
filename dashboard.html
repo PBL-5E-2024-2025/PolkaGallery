@@ -120,55 +120,7 @@
             }
         });
     </script>
-
-<script>
-    // Inisialisasi Supabase
-    const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
     
-    // Fungsi untuk mendapatkan username dari pengguna yang login
-    async function getUsername() {
-        // Ambil sesi login dari Supabase
-        const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
-    
-        if (sessionError) {
-            console.error("Error fetching session:", sessionError);
-            document.getElementById('username').textContent = 'Guest';
-            return;
-        }
-    
-        console.log('Session:', session); // Tambahkan log sesi untuk debugging
-    
-        if (session) {
-            const userId = session.user.id; // ID pengguna yang sedang login
-    
-            // Ambil data user dari tabel 'users' berdasarkan user ID
-            const { data: userProfile, error: profileError } = await supabaseClient
-                .from('users')
-                .select('username')
-                .eq('id', userId) // Mencocokkan dengan ID pengguna yang sedang login
-                .single(); // Ambil satu record
-    
-            if (profileError) {
-                console.error('Error fetching user profile:', profileError);
-                document.getElementById('username').textContent = 'Guest';
-            } else {
-                console.log('User Profile:', userProfile); // Tambahkan log untuk melihat userProfile
-                // Menampilkan username yang diambil dari tabel 'users'
-                document.getElementById('username').textContent = userProfile.username || 'Guest';
-            }
-        } else {
-            document.getElementById('username').textContent = 'Guest';
-        }
-    }
-    
-    // Memanggil fungsi getUsername setelah halaman dimuat
-    document.addEventListener('DOMContentLoaded', () => {
-        getUsername();
-    });
-    </script>
-
     <script>
         // Ambil elemen profil dan dropdown
         const profilePic = document.getElementById('profile-pic');
