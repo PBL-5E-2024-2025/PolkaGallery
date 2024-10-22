@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Komentar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styledashboard.css">
+    <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        main {
+            padding-top: 20px; /* Adjust this value based on your header's height */
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>olka Gallery Admin</span>
+            </div>
+        </div>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+        
+            <!-- Profil Admin dengan Dropdown -->
+            <div class="profile-container">
+                <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
+                <div class="dropdown-content" id="dropdown-content">
+                    <a href="#">Profil</a>
+                    <a href="#">Keluar</a>
+                </div>
+            </div>
+        </div>        
+    </header>
+
+    <main>
+        <h2>Daftar Komentar</h2>        
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Komentar</th>
+                    <th>Tanggal Dikirim</th>
+                </tr>
+            </thead>
+            <tbody id="comment-table-body">
+                <!-- Data komentar akan dimasukkan di sini melalui JavaScript -->
+            </tbody>
+        </table>
+    </main>
+
+    <script>
+        // Ambil elemen profil dan dropdown
+        const profilePic = document.getElementById('profile-pic');
+        const dropdownContent = document.getElementById('dropdown-content');
+    
+        // Event listener untuk toggle dropdown saat gambar profil diklik
+        profilePic.addEventListener('click', function() {
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+    
+        // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
+        window.onclick = function(event) {
+            if (!event.target.matches('#profile-pic')) {
+                dropdownContent.style.display = 'none';
+            }
+        }
+    </script>
+    <script src="./kelolakomen.js"></script>
+</body>
+</html>

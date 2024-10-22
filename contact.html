@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="../Picture/logo_polka.ico">
-
     <style>
         .blue-banner {
             margin-top: 100px; /* Memberikan ruang di bawah header */
@@ -228,46 +227,50 @@
                 text-align: center;
             }
         }
-
     </style>
+
+    <!-- Tambahkan Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body>
     <header class="sticky">
-        <div class="logo-title">
-            <div class="logo">
-                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
-            </div>
-            <div class="navbar-title">
-                <span>Polnep 
-                    <br>Karya</span>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="./index.html" title="Home">Home</a></li>
-                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
-                <li><a href="./contact.html" title="Contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="auth-container">
-            <div class="logos">
-                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
-                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
-            </div>
-            <div class="profile-dropdown" id="profileDropdown" style="display:none;">
-                <img src="./assets/image/user.jpg" alt="Profile" class="profile-img" id="profileImg">
-                <div class="dropdown-content" id="dropdownContent">
-                    <a href="#" id="cekProfil">Cek Profil</a>
-                    <a href="#" id="kirimProyek">Kirim Proyek</a>
-                    <a href="#" id="logout">Keluar</a>
+        <header class="sticky">
+            <div class="logo-title">
+                <div class="logo">
+                    <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                </div>
+                <div class="navbar-title">
+                    <span>Polnep 
+                        <br>Karya</span>
                 </div>
             </div>
-            <div>
-            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a>
+            <nav>
+                <ul>
+                    <li><a href="./home.html" title="Home">Home</a></li>
+                    <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
+                    <li><a href="./contact.html" title="Contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-container">
+                <div class="logos">
+                    <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                    <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+                </div>
+                <div class="profile-dropdown" id="profileDropdown" style="display:none;">
+                    <img src="./assets/image/user.jpg" alt="Profile" class="profile-img" id="profileImg">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <a href="#" id="cekProfil">Cek Profil</a>
+                        <a href="#" id="kirimProyek">Kirim Proyek</a>
+                        <a href="#" id="logout">Keluar</a>
+                    </div>
+                </div>
+                <div>
+                <a href="./login.html" class="sign-in" id="signInLink">Sign In</a>
+                </div>
             </div>
-        </div>
-    </header> 
+        </header> 
+    </header>
 
     <!-- Persegi panjang biru -->
     <div class="blue-banner"></div>
@@ -297,26 +300,33 @@
     </div>
 
     <script>
-        document.getElementById('commentForm').addEventListener('submit', function(event) {
+        // Setup Supabase client
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co'; // Ganti dengan URL Supabase Anda
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjcxNzA4MSwiZXhwIjoyMDQyMjkzMDgxfQ.K76C-QfzmypZfQ3vkJGUzgJmVxiFoAzb4ChC923gKCQ'; // Ganti dengan API Key Anda
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById('commentForm').addEventListener('submit', async function(event) {
             event.preventDefault();
 
             // Mengambil data form
-            const formData = new FormData(event.target);
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
 
-            const comment = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                comment: formData.get('comment'),
-                timestamp: new Date().toISOString()
-            };
+            // Menyimpan komentar ke Supabase
+            const { data, error } = await supabaseClient
+                .from('feedback')
+                .insert([
+                    { nama: name, email: email, komentar: comment, tgl_dikirim: new Date().toISOString() }
+                ]);
 
-            var comments = JSON.parse(localStorage.getItem('comments')) || [];
-            comments.push(comment);
-
-            localStorage.setItem('comments', JSON.stringify(comments));
-
-            alert('Komentar Anda telah berhasil dikirim!');
-            document.getElementById('commentForm').reset();
+            if (error) {
+                console.error('Error saving comment:', error);
+                alert('Terjadi kesalahan saat mengirim komentar.');
+            } else {
+                alert('Komentar Anda telah berhasil dikirim!');
+                document.getElementById('commentForm').reset();
+            }
         });
     </script>
 
@@ -367,8 +377,6 @@
         </div>
     </div>
 </div>
-
-
 </body>
 
 </html>
