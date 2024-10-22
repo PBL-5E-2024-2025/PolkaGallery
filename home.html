@@ -114,8 +114,7 @@
                 <img src="./assets/image/logo_polka.png" alt="Logo Polka">
             </div>
             <div class="navbar-title">
-                <span>Polnep 
-                    <br>Karya</span>
+                <span>Polnep <br>Karya</span>
             </div>
         </div>
         <nav>
@@ -130,20 +129,21 @@
                 <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
                 <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
             </div>
-            <div class="profile-dropdown" id="profileDropdown" style="display:none;">
-                <img src="./assets/image/user.jpg" alt="Profile" class="profile-img" id="profileImg">
-                <div class="dropdown-content" id="dropdownContent">
-                    <a href="#" id="cekProfil">Cek Profil</a>
-                    <a href="#" id="kirimProyek">Kirim Proyek</a>
-                    <a href="#" id="logout">Keluar</a>
-                </div>
-            </div>
-            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a>
+                <a href="./login.html" class="sign-in" id="signInLink" style="display: none;">Sign In</a>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <h2 id="username-display">Nama User</h2>
+                        <a href="#" id="cekProfil">Cek Profil</a>
+                        <a href="#" id="kirimProyek">Kirim Proyek</a>
+                        <a href="#" id="logout">Keluar</a>
+                    </div>
+                </div>                
             </div>
         </div>
-    </header>   
-     
+    </header>
     
+     
     <main>
         <section class="showcase">
             <img src="./assets/image/polnep.jpeg" alt="Politeknik Negeri Pontianak" class="image-showcase">
@@ -255,8 +255,9 @@
                 window.location.href = "ta-project-page.html"; // Ganti dengan URL halaman TA
             });
         </script>
+
+<script src="log.js"></script>
               
-        
     </main>
 </body>
 </html>

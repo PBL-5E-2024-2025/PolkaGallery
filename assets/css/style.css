@@ -333,3 +333,68 @@ footer {
         margin: 10px 0; /* Margin for projects */
     }
 }
+
+/* Kontainer Profil */
+.profile-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+/* Foto Profil */
+.profile-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #0C3790;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect untuk foto profil */
+.profile-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 180px;
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Konten dalam Dropdown */
+.dropdown-content h2 {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Aktifkan dropdown saat profil di-klik */
+.profile-dropdown.active .dropdown-content {
+    display: block;
+}

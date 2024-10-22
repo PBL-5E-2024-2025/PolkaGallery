@@ -90,7 +90,7 @@
 <body>
 
     <div class="profile" id="profile" style="display: none;">
-        <img src="default-profile.png" alt="Default Profile"> <!-- Ganti dengan path foto profil default -->
+        <img src="assets/image/user.png" alt="Default Profile"> <!-- Ganti dengan path foto profil default -->
         <h2 id="username-display">User</h2>
     </div>
 
@@ -131,21 +131,23 @@
                     .select('*')
                     .eq('username', username)
                     .eq('password', password);
-    
-                if (error) {
-                    console.error('Error fetching data:', error.message);
-                    alert('Login failed. Please try again.');
-                } else if (data.length > 0) {
-                    // Login successful, redirect to dashboard
-                    alert('Login successful! Redirecting to dashboard...');
-                    window.location.href = "dashboard.html"; // Redirect to dashboard
-                } else {
-                    // Login failed, no match found
-                    alert('Invalid username or password.');
-                }
+
+                    if (data.length > 0) {
+                // Simpan data user ke session storage
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('username', data[0].username);
+                sessionStorage.setItem('profileImage', data[0].profile_image || 'default-profile.png'); // Gunakan default jika kosong
+
+                // Redirect ke halaman utama
+                alert('Login successful! Redirecting to home...');
+                window.location.href = "home.html";
+}
+
             });
         });
     </script>
+
+    
 
 </body>
 </html>
