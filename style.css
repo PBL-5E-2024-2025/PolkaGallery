@@ -1,0 +1,234 @@
+/* Mengatur gaya dasar untuk body */
+
+
+/* Mengatur gaya dasar untuk body dengan margin */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+/* Gaya untuk kontainer utama dengan margin untuk membatasi lebar */
+
+.container {
+    width: 80%;
+    /* Atur lebar kontainer */
+    margin: 50px auto;
+    /* Menambahkan margin atas-bawah 50px dan rata tengah secara horizontal */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Gaya untuk heading */
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+/* Gaya untuk tabel */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Gaya untuk header tabel */
+
+table th {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+
+/* Gaya untuk sel tabel */
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+
+
+/* Gaya untuk baris tabel (hover) */
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+/* Gaya untuk tombol */
+
+
+/* Gaya untuk tombol aksi (Edit, Hapus) */
+
+.action-link {
+    padding: 6px 10px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.action-link:hover {
+    background-color: #0056b3;
+}
+
+.action-delete {
+    background-color: #dc3545;
+}
+
+.action-delete:hover {
+    background-color: #c82333;
+}
+
+
+/* Gaya untuk form */
+
+form {
+    width: 100%;
+    margin-top: 20px;
+}
+
+form input[type="text"],
+form input[type="file"],
+form select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+/* Gaya untuk tombol submit */
+
+form input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+/* Gaya untuk link tambah dosen */
+
+.add-button {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Gaya untuk pesan sukses atau error */
+
+.message {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.message.success {
+    background-color: #28a745;
+    color: white;
+}
+
+.message.error {
+    background-color: #dc3545;
+    color: white;
+}
+
+
+/* Navbar Styling */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #0b3d7e;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #008cff;
+    color: rgb(255, 255, 255);
+}
+
+li a:hover:not(.active) {
+    background-color: #0e63a8;
+    color: rgb(255, 255, 255);
+}
+
+button {
+    background-color: #0e63a8;
+    /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #00bb35;
+    /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button1 {
+    padding: 10px 24px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    margin: 4px 2px;
+}
