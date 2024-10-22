@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Dosen</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://unpkg.com/@supabase/supabase-js"></script>
+    <script src="edit.js" defer></script>
+</head>
+
+<body>
+    <h2>Edit Data Dosen</h2>
+    <form id="editForm" enctype="multipart/form-data">
+        <label for="nip">NIP:</label>
+        <input type="text" id="nip" name="nip" required readonly><br>
+
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required><br>
+
+        <label for="sik">SIK:</label>
+        <input type="text" id="sik" name="sik" required><br>
+
+        <label for="sa">SA:</label>
+        <input type="text" id="sa" name="sa" required><br>
+
+        <label for="penter">Penter:</label>
+        <input type="text" id="penter" name="penter" required><br>
+
+        <label for="gambar">Upload Gambar:</label>
+        <input type="file" id="gambarFile" name="gambarFile"><br>
+
+        <button type="submit">Simpan Perubahan</button>
+    </form>
+</body>
+
+</html>
