@@ -134,15 +134,38 @@
                     <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
                     <div class="dropdown-content" id="dropdownContent">
                         <h2 id="username-display">Nama User</h2>
-                        <a href="#" id="cekProfil">Cek Profil</a>
+                        <a href="profil.html" id="cekProfil">Cek Profil</a>
                         <a href="#" id="kirimProyek">Kirim Proyek</a>
                         <a href="#" id="logout">Keluar</a>
                     </div>
-                </div>                
+                </div>  
+
+                <div id="kirimProyekPopup" class="popup-container">
+                    <div class="popup-content">
+                        <span class="close-popup" id="closePopup">&times;</span>
+                        <h2>Kirim Proyek</h2>
+                        <p>Silakan pilih salah satu proyek yang akan dikirim:</p>
+        
+                        <!-- Tiga kotak pilihan proyek dengan gambar -->
+                        <div class="project-options">
+                            <div class="project-box" id="pblBox">
+                                <img src="./assets/image/pbl-icon.png" alt="Proyek PBL" class="project-icon">
+                                <p>PBL</p>
+                            </div>
+                            <div class="project-box" id="lombaBox">
+                                <img src="./assets/image/lomba-icon.png" alt="Proyek Lomba" class="project-icon">
+                                <p>Lomba</p>
+                            </div>
+                            <div class="project-box" id="taBox">
+                                <img src="./assets/image/ta-icon.png" alt="Tugas Akhir" class="project-icon">
+                                <p>TA</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
-    
      
     <main>
         <section class="showcase">
@@ -181,7 +204,7 @@
                     <h2>K I R I M K A N &nbsp; K A R Y A M U</h2>
                     <p>Pamerkan hasil kreativitasmu dan inspirasi orang lain dengan karyamu!</p>
                     <!-- Tombol Kirim Proyek, ubah href ke id dari popup -->
-                    <button id="kirimProyekBtn" class="submit-button">Disini<span class="arrow">&rarr;</span></button>
+                    <button id="kirimProyekButton" class="submit-button">Disini<span class="arrow">&rarr;</span></button>
                 </div>
                 <div class="submit-image">
                     <img src="./assets/image/polnep1.jpg" alt="Submit Your Work">
@@ -189,34 +212,9 @@
             </div>
         </section>
 
-        <!-- Popup container -->
-        <div id="kirimProyekPopup" class="popup-container">
-            <div class="popup-content">
-                <span class="close-popup" id="closePopup">&times;</span>
-                <h2>Kirim Proyek</h2>
-                <p>Silakan pilih salah satu proyek yang akan dikirim:</p>
-
-                <!-- Tiga kotak pilihan proyek dengan gambar -->
-                <div class="project-options">
-                    <div class="project-box" id="pblBox">
-                        <img src="./assets/image/pbl-icon.png" alt="Proyek PBL" class="project-icon">
-                        <p>PBL</p>
-                    </div>
-                    <div class="project-box" id="lombaBox">
-                        <img src="./assets/image/lomba-icon.png" alt="Proyek Lomba" class="project-icon">
-                        <p>Lomba</p>
-                    </div>
-                    <div class="project-box" id="taBox">
-                        <img src="./assets/image/ta-icon.png" alt="Tugas Akhir" class="project-icon">
-                        <p>TA</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <script>
             // Ambil elemen-elemen yang dibutuhkan
-            const kirimProyekBtn = document.getElementById('kirimProyekBtn');
+            const kirimProyekBtn = document.getElementById('kirimProyek');
             const kirimProyekPopup = document.getElementById('kirimProyekPopup');
             const closePopup = document.getElementById('closePopup');
             
@@ -244,15 +242,15 @@
         
             // Event listener untuk kotak proyek
             pblBox.addEventListener('click', function() {
-                window.location.href = "pbl-project-page.html"; // Ganti dengan URL halaman PBL
+                window.location.href = "addproject.html"; // Ganti dengan URL halaman PBL
             });
         
             lombaBox.addEventListener('click', function() {
-                window.location.href = "lomba-project-page.html"; // Ganti dengan URL halaman Lomba
+                window.location.href = "addlomba.html"; // Ganti dengan URL halaman Lomba
             });
         
             taBox.addEventListener('click', function() {
-                window.location.href = "ta-project-page.html"; // Ganti dengan URL halaman TA
+                window.location.href = "addTA.html"; // Ganti dengan URL halaman TA
             });
         </script>
 

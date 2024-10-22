@@ -42,23 +42,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// Event listener untuk form login
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Mencegah pengiriman form secara default
-
-    const usernameInput = document.getElementById('username').value;
-    const passwordInput = document.getElementById('password').value;
-
-    // Logika pengecekan username dan password (ini bisa disesuaikan)
-    if (usernameInput === 'user' && passwordInput === 'password') { // Contoh login
-        sessionStorage.setItem('isLoggedIn', true);
-        sessionStorage.setItem('username', usernameInput);
-        sessionStorage.setItem('profileImage', './assets/image/user.png'); // Ganti dengan foto profil yang sesuai
-
-        // Alihkan ke halaman utama setelah login
-        window.location.href = './index.html'; // Ganti dengan halaman utama kamu
-    } else {
-        alert('Username atau password salah!');
-    }
-});
