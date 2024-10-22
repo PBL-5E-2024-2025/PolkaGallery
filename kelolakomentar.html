@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola Proyek</title>
+    <title>Kelola Komentar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
@@ -44,43 +44,21 @@
     </header>
 
     <main>
-        <h2>Kelola Tugas Akhir</h2>        
+        <h2>Daftar Komentar</h2>        
         <table>
             <thead>
                 <tr>
-                    <th>Nama Proyek</th>
-                    <th>Deskripsi</th>
-                    <th>Tahun</th>
-                    <th>Jenis Project</th>
-                    <th>Link Project</th>
-                    <th>Link Video</th>
-                    <th>Gambar</th>
-                    <th>Tools</th>
-                    <th>Kontak Mahasiswa</th>
-                    <th>Aksi</th>
-                    <th>Nama Mahasiswa</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Komentar</th>
+                    <th>Tanggal Dikirim</th>
                 </tr>
             </thead>
-            <tbody id="project-table-body">
-                <!-- Data proyek akan dimasukkan di sini melalui JavaScript -->
+            <tbody id="comment-table-body">
+                <!-- Data komentar akan dimasukkan di sini melalui JavaScript -->
             </tbody>
         </table>
     </main>
-
-    <!-- Modal untuk menambahkan proyek -->
-    <div id="addProjectModal" style="display:none;">
-        <h3>Tambah TA</h3>
-        <label for="projectName">Nama Proyek:</label>
-        <input type="text" id="projectName" placeholder="Nama Proyek">
-        <label for="projectDescription">Deskripsi:</label>
-        <input type="text" id="projectDescription" placeholder="Deskripsi">
-        <label for="startDate">Tanggal Mulai:</label>
-        <input type="date" id="startDate">
-        <label for="endDate">Tanggal Selesai:</label>
-        <input type="date" id="endDate">
-        <button class="button" onclick="addProject()">Simpan</button>
-        <button class="button" onclick="closeAddProjectModal()">Batal</button>
-    </div>
 
     <script>
         // Ambil elemen profil dan dropdown
@@ -99,6 +77,6 @@
             }
         }
     </script>
-    <script src="./kelolaTA.js"></script>
+    <script src="./kelolakomen.js"></script>
 </body>
 </html>

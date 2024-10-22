@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchProjects() {
     const { data, error } = await supabaseClient
         .from('project')
-        .select('id_project, judul, deskripsi, tahun, jenis_project, id_tim, link_project, link_video, skala_id, peringkat_id, url_image, tools, kontak_mahasiswa')
+        .select('judul, deskripsi, tahun, jenis_project, id_tim, link_project, link_video, skala_id, peringkat_id, url_image, tools, kontak_mahasiswa')
         .eq('jenis_project', 'Lomba'); // Add this line to filter projects by 'Lomba'
 
     if (error) {
@@ -25,7 +25,6 @@ async function fetchProjects() {
         const row = document.createElement('tr');
         
         row.innerHTML = `
-            <td>${project.id_project}</td>
             <td>${project.judul}</td>
             <td>${project.deskripsi}</td>
             <td>${project.tahun}</td>

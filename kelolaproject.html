@@ -12,13 +12,66 @@
         main {
             padding-top: 20px;
         }
+
+        .edit-button {
+            background-color: #4CAF50; /* Hijau */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Merah */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .post-button {
+            background-color: #008CBA; /* Biru */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .button {
+            padding: 10px 15px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <header class="sticky">
         <div class="logo-title">
             <div class="logo">
-                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                <a href="dashboard.html">
+                    <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                </a>                
             </div>
             <div class="navbar-title">
                 <span>olka Gallery Admin</span>
@@ -46,7 +99,6 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Nama Proyek</th>
                     <th>Deskripsi</th>
                     <th>Tahun</th>
@@ -68,41 +120,45 @@
     </main>
 
     <!-- Modal untuk menambahkan proyek -->
-    <div id="addProjectModal" style="display:none;">
-        <h3>Tambah Proyek</h3>
-        <label for="projectName">Nama Proyek:</label>
-        <input type="text" id="projectName" placeholder="Nama Proyek">
-        <label for="projectDescription">Deskripsi:</label>
-        <input type="text" id="projectDescription" placeholder="Deskripsi">
-        <label for="projectYear">Tahun:</label>
-        <input type="text" id="projectYear" placeholder="Tahun">
-        <label for="projectType">Jenis Proyek:</label>
-        <input type="text" id="projectType" placeholder="Jenis Proyek">
-        <label for="teamId">ID Tim:</label>
-        <input type="text" id="teamId" placeholder="ID Tim">
-        <button class="button" onclick="addProject()">Simpan</button>
-        <button class="button" onclick="closeAddProjectModal()">Batal</button>
+    <div id="addProjectModal" class="modal">
+        <div class="modal-content">
+            <h3>Tambah Proyek</h3>
+            <label for="projectName">Nama Proyek:</label>
+            <input type="text" id="projectName" placeholder="Nama Proyek">
+            <label for="projectDescription">Deskripsi:</label>
+            <input type="text" id="projectDescription" placeholder="Deskripsi">
+            <label for="projectYear">Tahun:</label>
+            <input type="text" id="projectYear" placeholder="Tahun">
+            <label for="projectType">Jenis Proyek:</label>
+            <input type="text" id="projectType" placeholder="Jenis Proyek">
+            <label for="teamId">ID Tim:</label>
+            <input type="text" id="teamId" placeholder="ID Tim">
+            <button class="button" onclick="addProject()">Simpan</button>
+            <button class="button" onclick="closeAddProjectModal()">Batal</button>
+        </div>
     </div>
 
-    <script>
-        // Ambil elemen profil dan dropdown
-        const profilePic = document.getElementById('profile-pic');
-        const dropdownContent = document.getElementById('dropdown-content');
-    
-        // Event listener untuk toggle dropdown saat gambar profil diklik
-        profilePic.addEventListener('click', function() {
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-        });
-    
-        // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
-        window.onclick = function(event) {
-            if (!event.target.matches('#profile-pic')) {
-                dropdownContent.style.display = 'none';
-            }
-        }
-    </script>
+    <!-- Modal untuk mengedit proyek -->
+    <div id="editProjectModal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Proyek</h3>
+            <input type="hidden" id="editProjectId">
+            <label for="editProjectName">Nama Proyek:</label>
+            <input type="text" id="editProjectName" placeholder="Nama Proyek">
+            <label for="editProjectDescription">Deskripsi:</label>
+            <input type="text" id="editProjectDescription" placeholder="Deskripsi">
+            <label for="editProjectYear">Tahun:</label>
+            <input type="text" id="editProjectYear" placeholder="Tahun">
+            <label for="editProjectType">Jenis Proyek:</label>
+            <input type="text" id="editProjectType" placeholder="Jenis Proyek">
+            <label for="editTeamId">ID Tim:</label>
+            <input type="text" id="editTeamId" placeholder="ID Tim">
+            <button class="button" onclick="saveEditedProject()">Simpan</button>
+            <button class="button" onclick="closeEditProjectModal()">Batal</button>
+        </div>
+    </div>
 
-<script src="./kelolaproject.js"></script>
+    <script src="./kelolaproject.js"></script>
 
 </body>
 </html>
