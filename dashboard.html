@@ -139,5 +139,51 @@
         }
     </script>
 
+<script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co'; // Ganti dengan Supabase URL kamu
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0'; // Ganti dengan Supabase API Key kamu
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchProjectCounts();
+    });
+    
+    async function fetchProjectCounts() {
+        try {
+            // Menghitung jumlah Total PBL
+            const { data: pblData, error: pblError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'PBL');
+    
+            // Menghitung jumlah Total Lomba
+            const { data: lombaData, error: lombaError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'Lomba');
+    
+            // Menghitung jumlah Total Tugas Akhir
+            const { data: taData, error: taError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'TA');
+    
+            if (pblError || lombaError || taError) {
+                console.error('Error fetching project counts:', pblError || lombaError || taError);
+                return;
+            }
+    
+            // Tampilkan jumlah di dashboard
+            document.getElementById('totalPBL').textContent = pblData.length;
+            document.getElementById('totalCompetitions').textContent = lombaData.length;
+            document.getElementById('totalFinalProjects').textContent = taData.length;
+    
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    </script>    
+
 </body>
 </html>
