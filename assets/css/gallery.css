@@ -137,3 +137,61 @@ nav ul li a {
 .project-card button:hover {
     background-color: #004b8d;
 }
+
+header.sticky nav ul li a {
+    font-size: 18px; /* Tambah ukuran font */
+}
+
+header.sticky .navbar-title span {
+    font-size: 22px; /* Tambah ukuran font */
+}
+
+.project-card h2 {
+    font-size: 16px; /* Ukuran judul proyek */
+}
+
+.project-card p {
+    font-size: 14px; /* Ukuran deskripsi proyek */
+}
+
+header.sticky .logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.project-card {
+    width: 250px; /* Pastikan ukuran kartu cukup besar */
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.project-card h2 {
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.project-card p {
+    font-size: 14px;
+    color: #666;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsif */
+    gap: 20px;
+    padding: 20px;
+}
+
+body {
+    background-size: cover;
+    background-position: center;
+}

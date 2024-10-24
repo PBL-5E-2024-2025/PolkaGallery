@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery</title>
-    <link rel="stylesheet" href="/assets/css/gallery.css">
+    <meta name="description" content="Gallery of projects from Politeknik Negeri Pontianak students.">
+    <title>Politeknik Project Gallery</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@supabase/supabase-js"></script> <!-- Supabase JS -->
+    <link rel="icon" href="/assets/image/logo_polka.ico">
     <script src="gallery.js" defer></script>
 </head>
+
 <body>
-    <!-- Navbar -->
     <header class="sticky">
-        <div class="logo-title">
-            <div class="logo">
-                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
-            </div>
-            <div class="navbar-title">
-                <span>Polnep <br>Karya</span>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="home.html" title="Home">Home</a></li>
-                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
-                <li><a href="./contact.html" title="Contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="auth-container">
-            <div class="logos">
-                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
-                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
-            </div>
-            <a href="./login.html" class="sign-in" id="signInLink" style="display: none;">Sign In</a>
-            <div class="profile-dropdown" id="profileDropdown">
-                <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
-                <div class="dropdown-content" id="dropdownContent">
-                    <h2 id="username-display">Nama User</h2>
-                    <a href="profil.html" id="cekProfil">Cek Profil</a>
-                    <a href="#" id="kirimProyek">Kirim Proyek</a>
-                    <a href="#" id="logout">Keluar</a>
+        <header class="sticky">
+            <div class="logo-title">
+                <div class="logo">
+                    <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                </div>
+                <div class="navbar-title">
+                    <span>Polnep <br>Karya</span>
                 </div>
             </div>
-        </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html" title="Home">Home</a></li>
+                    <li><a href="gallery.html" title="Gallery">Gallery</a></li>
+                    <li><a href="contact.html" title="Contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-container">
+                <div class="logos">
+                    <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                    <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+                </div>
+                <a href="./login.html" class="sign-in" id="signInLink" style="display: none;">Sign In</a>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
+                    <div class="dropdown-content" id="dropdownContent">
+                        <h2 id="username-display">Nama User</h2>
+                        <a href="profil.html" id="cekProfil">Cek Profil</a>
+                        <a href="#" id="kirimProyek">Kirim Proyek</a>
+                        <a href="#" id="logout">Keluar</a>
+                    </div>
+                </div>
+            </div>
+        </header>
     </header>
 
-    <!-- Search and Filter Section -->
-    <section class="search-filter">
-        <h1>Apa Yang ingin dicari?</h1>
-        <div class="filter-container">
-            <select id="kategori-project">
-                <option value="">Kategori Project</option>
-                <!-- Tambahkan opsi kategori di sini -->
-            </select>
-            <input type="text" id="nama-project" placeholder="Nama Project">
-            <button id="search-button">Cari</button>
+    <main>
+        <div class="blue-banner"></div>
+
+        <!-- White box containing the search and filter form -->
+        <div class="white-box search-box">
+            <h2 class="search-title">Apa Yang Ingin Dicari?</h2>
+            <form id="searchForm" class="search-form">
+                <div class="filter-group">
+                    <select id="kategoriDropdown" class="dropdown">
+                        <option value="">Kategori Project</option>
+                        <option value="PBL">PBL</option>
+                        <option value="Lomba">Lomba</option>
+                        <option value="TA">TA</option>
+                    </select>
+                    <input type="text" id="namaProject" class="search-input" placeholder="Nama Project">
+                </div>
+            </form>
         </div>
-    </section>
 
-    <!-- Gallery Grid -->
-    <section class="gallery-grid" id="gallery-grid">
-        <!-- Project cards will be appended here via JavaScript -->
-    </section>
+        <section class="gallery">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Project cards will be dynamically added here -->
+            </div>
+        </section>
+    </main>
 
+    <script src="log.js"></script>
 </body>
+
 </html>
