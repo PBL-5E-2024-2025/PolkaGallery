@@ -43,15 +43,15 @@
     <div class="statistics-container">
         <div class="stat-box">
             <div class="stat-title">Total PBL</div>
-            <div class="stat-number" id="totalPBL">50</div>
+            <div class="stat-number" id="totalPBL"></div>
         </div>
         <div class="stat-box">
             <div class="stat-title">Total Lomba</div>
-            <div class="stat-number" id="totalCompetitions">30</div>
+            <div class="stat-number" id="totalCompetitions"></div>
         </div>
         <div class="stat-box">
             <div class="stat-title">Total Tugas Akhir</div>
-            <div class="stat-number" id="totalFinalProjects">20</div>
+            <div class="stat-number" id="totalFinalProjects"></div>
         </div>
     </div>
 
@@ -138,6 +138,94 @@
             }
         }
     </script>
+
+<script>
+    // Initialize Supabase client
+    const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co'; // Ganti dengan Supabase URL kamu
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0'; // Ganti dengan Supabase API Key kamu
+    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchProjectCounts();
+    });
+    
+    async function fetchProjectCounts() {
+        try {
+            // Menghitung jumlah Total PBL
+            const { data: pblData, error: pblError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'PBL');
+    
+            // Menghitung jumlah Total Lomba
+            const { data: lombaData, error: lombaError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'Lomba');
+    
+            // Menghitung jumlah Total Tugas Akhir
+            const { data: taData, error: taError } = await supabaseClient
+                .from('project')
+                .select('*', { count: 'exact' })
+                .eq('jenis_project', 'TA');
+    
+            if (pblError || lombaError || taError) {
+                console.error('Error fetching project counts:', pblError || lombaError || taError);
+                return;
+            }
+    
+            // Tampilkan jumlah di dashboard
+            document.getElementById('totalPBL').textContent = pblData.length;
+            document.getElementById('totalCompetitions').textContent = lombaData.length;
+            document.getElementById('totalFinalProjects').textContent = taData.length;
+    
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+    </script>    
+    
+    <script>
+        async function fetchVisitorData() {
+            try {
+                // Mengambil jumlah kunjungan per bulan
+                const { data, error } = await supabaseClient
+                    .from('visitors')
+                    .select('visit_time');
+    
+                if (error) {
+                    console.error('Error fetching visitor data:', error);
+                    return;
+                }
+    
+                // Memproses data untuk menghitung jumlah kunjungan per bulan
+                const monthlyVisits = {};
+                data.forEach(visit => {
+                    const month = new Date(visit.visit_time).toLocaleString('default', { month: 'long' });
+                    if (!monthlyVisits[month]) {
+                        monthlyVisits[month] = 0;
+                    }
+                    monthlyVisits[month]++;
+                });
+    
+                // Siapkan data untuk grafik
+                const labels = Object.keys(monthlyVisits);
+                const dataPoints = Object.values(monthlyVisits);
+    
+                // Perbarui data di chart
+                visitorChart.data.labels = labels;
+                visitorChart.data.datasets[0].data = dataPoints;
+                visitorChart.update();
+    
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    
+        // Panggil fungsi fetchVisitorData saat halaman dashboard di-load
+        document.addEventListener('DOMContentLoaded', fetchVisitorData);
+    </script>
+    
 
 </body>
 </html>
