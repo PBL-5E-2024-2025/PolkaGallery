@@ -91,7 +91,7 @@
 <body>
 
     <div class="profile" id="profile" style="display: none;">
-        <img src="assets/image/user.png" alt="Default Profile"> <!-- Ganti dengan path foto profil default -->
+        <img src="assets/image/user.png" alt="Default Profile">
         <h2 id="username-display">User</h2>
     </div>
 
@@ -137,7 +137,7 @@
                 // Simpan data user ke session storage
                 sessionStorage.setItem('isLoggedIn', 'true');
                 sessionStorage.setItem('username', data[0].username);
-                sessionStorage.setItem('profileImage', data[0].profile_image || 'default-profile.png'); // Gunakan default jika kosong
+                sessionStorage.setItem('profileImage', data[0].profile_image || 'assets/image/user.png'); // Gunakan default jika kosong
 
                 // Redirect ke halaman utama
                 alert('Login successful! Redirecting to home...');

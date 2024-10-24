@@ -8,14 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileImg = document.getElementById('profileImg');
     const usernameDisplay = document.getElementById('username-display');
 
+    // Menambahkan console log untuk debugging
+    console.log('Profile image URL:', profileImage);
+    console.log('Username:', username);
+
     // Tampilkan profil pengguna jika sudah login
     if (isLoggedIn) {
         signInLink.style.display = 'none'; // Sembunyikan tombol Sign In
         profileDropdown.style.display = 'flex'; // Tampilkan dropdown
 
         // Setel foto profil
-        profileImg.src = profileImage || './assets/image/user.png';
+        profileImg.src = profileImage || 'assets/image/user.png';
         usernameDisplay.textContent = username;
+
+        // Debugging untuk memeriksa apakah gambar diatur
+        console.log('Setting profile image src to:', profileImg.src);
     } else {
         signInLink.style.display = 'inline'; // Tampilkan tombol Sign In
         profileDropdown.style.display = 'none'; // Sembunyikan dropdown dan foto profil
