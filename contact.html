@@ -227,6 +227,102 @@
                 text-align: center;
             }
         }
+
+        .popup-container {
+            display: none; 
+            position: fixed;
+            justify-content: center; 
+            align-items: center; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1000;
+        }
+
+        /* Popup content box */
+        .popup-content {
+            background-color: white;
+            width: 800px;
+            padding: 35px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed; /* Fixed agar tidak tergeser dengan scroll */
+            top: 50%; /* Atur posisi ke 50% dari atas */
+            left: 50%; /* Atur posisi ke 50% dari kiri */
+            transform: translate(-50%, -50%); /* Geser agar benar-benar di tengah */
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        /* Animasi popup muncul */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Header with blue background and white circle */
+        .popup-header {
+            background-color: #0C3790;
+            border-radius: 10px 10px 0 0;
+            padding: 20px;
+            position: relative;
+        }
+
+        .popup-header .circle {
+            background-color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-header .circle img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Title and content styles */
+        .popup-body h2 {
+            margin-top: 20px;
+            color: #0C3790;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .popup-body p {
+            text-align: justify;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Close button */
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .popup-body li {
+            text-align: left; /* Mengatur teks dalam <li> agar rata kiri */
+            margin-bottom: 10px; /* Jarak antar item */
+        }
+
+    /* Jika ingin menyesuaikan margin dan font, bisa tambahkan di sini */
+        .popup-body {
+            font-size: 14px; /* Ubah ukuran font jika diperlukan */
+        }
+
+
     </style>
 
     <!-- Tambahkan Supabase CDN -->
@@ -361,12 +457,193 @@
         <div class="faqs-section">
             <h3>FAQs</h3>
             <ul>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Bantuan</a></li>
-                <li><a href="#">Cara Berkontribusi</a></li>
-                <li><a href="#">Cara Kolaborasi</a></li>
+                <li><a href="#" id="tentangKamiLink">Tentang Kami</a></li>
+                <li><a href="#" id="bantuanLink">Bantuan</a></li>
+                <li><a href="#" id="caraKontribusiLink">Cara Berkontribusi</a></li>
+                <li><a href="#" id="caraBerkolaborasiLink">Cara Berkolaborasi</a></li>
             </ul>
         </div>
+        
+        <!-- Popup Container: Tentang Kami -->
+        <div id="tentangKamiPopup" class="popup-container">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <div class="popup-header">
+                    <div class="circle">
+                        <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <h2>Tentang Kami</h2>
+                    <p><strong>Apa itu Gallery Showcase?</strong><br>
+                        Gallery Showcase adalah platform yang digunakan oleh mahasiswa Prodi Teknik Informatika 
+                        untuk memamerkan hasil karya mereka, termasuk proyek, tugas akhir, dan partisipasi dalam kompetisi. 
+                        Platform ini bertujuan untuk menunjukkan kemampuan dan kreativitas mahasiswa kepada publik.
+                    </p>
+                    <p><strong>Apa tujuan dari Gallery Showcase?</strong><br>
+                        Tujuan dari Gallery Showcase adalah untuk menginspirasi dan memotivasi mahasiswa lain, 
+                        meningkatkan eksposur karya mahasiswa kepada khalayak luas, dan memfasilitasi kolaborasi 
+                        dengan industri dan akademisi lainnya.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Popup Container: Bantuan -->
+        <div id="bantuanPopup" class="popup-container">
+            <div class="popup-content">
+                <span class="close-popup">&times;</span>
+                <div class="popup-header">
+                    <div class="circle">
+                        <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <h2>Bantuan</h2>
+                    <p><strong>Saya mengalami masalah saat menggunakan situs. Bagaimana cara saya mendapatkan bantuan?</strong></p>
+                    <ul>
+                        <li><strong>FAQ</strong>: Periksa bagian FAQ untuk jawaban atas pertanyaan umum.</li>
+                        <li><strong>Formulir Kontak</strong>: Jika masalah Anda tidak tercakup di FAQ, 
+                            Anda bisa menghubungi kami melalui formulir kontak di halaman <strong>Contact Us</strong>.
+                        </li>
+                        <li><strong>Live Chat</strong>: Jika tersedia, Anda bisa langsung berbicara 
+                            dengan tim support kami melalui fitur live chat.
+                        </li>
+                    </ul>
+                    <p><strong>Saya ingin melaporkan bug atau masalah teknis. Bagaimana caranya?</strong></p>
+                    <p>
+                        Anda dapat melaporkan bug atau masalah teknis dengan mengisi formulir khusus di halaman Bantuan 
+                        atau mengirimkan email ke <a href="mailto:support@galleryshowcase.com">support@galleryshowcase.com</a>. 
+                        Harap sertakan detail masalah, seperti halaman tempat terjadi masalah dan langkah-langkah sebelum masalah muncul.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup Container: Cara Berkontribusi -->
+        <div id="caraKontribusiPopup" class="popup-container">
+            <div class="popup-content small-popup">
+                <span class="close-popup">&times;</span>
+                <div class="popup-header">
+                    <div class="circle">
+                        <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <h2>Cara Kontribusi</h2>
+                    <p><strong>Bagaimana saya dapat berkontribusi ke Gallery Showcase?</strong><br>
+                        Jika Anda memiliki karya seni, proyek kreatif, atau penelitian yang ingin ditampilkan di galeri kami, Anda dapat mengajukannya melalui halaman <em>Contribute</em>. Kami menerima berbagai jenis kontribusi dari individu maupun kelompok, baik proyek individu, proyek kelompok, hingga karya kompetisi.
+                    </p>
+                    <p><strong>Apa syarat untuk berkontribusi?</strong><br>
+                        - Karya harus orisinil dan belum pernah dipublikasikan di platform lain tanpa izin.<br>
+                        - Setiap karya harus disertai deskripsi proyek, nama kreator, serta kategori yang sesuai.<br>
+                        - Karya dapat berupa visual art, video, animasi, atau proyek interaktif lainnya.
+                    </p>
+                    <p><strong>Bagaimana proses pengajuan kontribusi?</strong><br>
+                        Prosesnya cukup mudah:<br>
+                        <ul>
+                            <li>Login terlebih dahulu</li>
+                            <li>Pilih tambah proyek yang ada di pilihan foto profil</li>
+                            <li>Pilih proyek yang ingin dikirim</li>
+                            <li>Isi data terkait proyek dan kirim</li>
+                            <li>Setelah disetujui oleh tim kurasi kami, karya Anda akan dipublikasikan di galeri kami.</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup Container: Cara Berkolaborasi -->
+        <div id="caraBerkolaborasiPopup" class="popup-container">
+            <div class="popup-content small-popup">
+                <span class="close-popup">&times;</span>
+                <div class="popup-header">
+                    <div class="circle">
+                        <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                    </div>
+                </div>
+                <div class="popup-body">
+                    <h2>Cara Berkolaborasi</h2>
+                    <p><strong>Bagaimana cara saya berkolaborasi dengan Gallery Showcase?</strong><br>
+                        Kami selalu terbuka untuk kolaborasi dengan individu, institusi, maupun organisasi yang ingin berkontribusi atau bekerja sama dengan kami. Jika Anda tertarik berkolaborasi, Anda bisa menghubungi kami melalui email di <a href="mailto:email@example.com">email@example.com</a> atau mengisi formulir kolaborasi pada halaman <em>Contact Us</em>.
+                    </p>
+                    <p><strong>Jenis kolaborasi apa saja yang dapat dilakukan?</strong><br>
+                        Kami terbuka untuk berbagai jenis kolaborasi, seperti:<br>
+                        - Pengorganisasian acara atau pameran online dan offline.<br>
+                        - Menampilkan karya seniman atau kreator di platform kami.<br>
+                        - Sponsorship acara atau program kreatif.<br>
+                        - Kolaborasi dengan institusi pendidikan atau seni.
+                    </p>
+                    <p><strong>Apakah ada kriteria untuk berkolaborasi?</strong><br>
+                        Ya, kolaborasi akan dipertimbangkan berdasarkan kesesuaian dengan visi dan misi Gallery Showcase, serta nilai yang bisa diberikan kepada komunitas kreatif dan pengunjung kami.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- JavaScript -->
+        <script>
+            // Get elements
+            const tentangKamiLink = document.getElementById('tentangKamiLink');
+            const tentangKamiPopup = document.getElementById('tentangKamiPopup');
+            const bantuanLink = document.getElementById('bantuanLink');
+            const bantuanPopup = document.getElementById('bantuanPopup');
+            const caraKontribusiLink = document.getElementById('caraKontribusiLink'); // Tambahkan ID ke elemen HTML
+            const caraKontribusiPopup = document.getElementById('caraKontribusiPopup');
+            const caraBerkolaborasiLink = document.getElementById('caraBerkolaborasiLink'); // Tambahkan ID ke elemen HTML
+            const caraBerkolaborasiPopup = document.getElementById('caraBerkolaborasiPopup');
+            const closeButtons = document.querySelectorAll('.close-popup');
+        
+            // Function to show a popup
+            function showPopup(popup) {
+                popup.style.display = 'flex';
+            }
+        
+            // Function to hide a popup
+            function hidePopup(popup) {
+                popup.style.display = 'none';
+            }
+        
+            // Event listeners for opening popups
+            tentangKamiLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                showPopup(tentangKamiPopup);
+            });
+        
+            bantuanLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                showPopup(bantuanPopup);
+            });
+
+            caraKontribusiLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                showPopup(caraKontribusiPopup);
+            });
+
+            caraBerkolaborasiLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                showPopup(caraBerkolaborasiPopup);
+            });
+        
+            // Event listeners for closing popups
+            closeButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    hidePopup(tentangKamiPopup);
+                    hidePopup(bantuanPopup);
+                    hidePopup(caraKontribusiPopup);
+                    hidePopup(caraBerkolaborasiPopup);
+                });
+            });
+        
+            // Close popup when clicking outside the content box
+            window.addEventListener('click', (event) => {
+                if (event.target === tentangKamiPopup) hidePopup(tentangKamiPopup);
+                if (event.target === bantuanPopup) hidePopup(bantuanPopup);
+                if (event.target === caraKontribusiPopup) hidePopup(caraKontribusiPopup);
+                if (event.target === caraBerkolaborasiPopup) hidePopup(caraBerkolaborasiPopup);
+            });
+        </script>
 
         <div class="hours-section">
             <h3>Jam Kerja</h3>
