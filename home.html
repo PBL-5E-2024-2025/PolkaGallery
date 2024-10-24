@@ -10,6 +10,44 @@
     <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
     <style>
         /* Tombol Kirim Proyek */
+        .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* Popup Content */
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Warning Icon */
+  .popup-warning-icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+
+  /* Close Button */
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+  }
+        
         .kirim-btn {
             background-color: #0C3790;
             color: white;
@@ -200,17 +238,51 @@
         <!-- New Section -->
         <section class="submit-container">
             <div class="submit-content">
-                <div class="submit-text">
-                    <h2>K I R I M K A N &nbsp; K A R Y A M U</h2>
-                    <p>Pamerkan hasil kreativitasmu dan inspirasi orang lain dengan karyamu!</p>
-                    <!-- Tombol Kirim Proyek, ubah href ke id dari popup -->
-                    <button id="kirimProyekButton" class="submit-button">Disini<span class="arrow">&rarr;</span></button>
-                </div>
-                <div class="submit-image">
-                    <img src="./assets/image/polnep1.jpg" alt="Submit Your Work">
-                </div>
+              <div class="submit-text">
+                <h2>K I R I M K A N &nbsp; K A R Y A M U</h2>
+                <p>Pamerkan hasil kreativitasmu dan inspirasi orang lain dengan karyamu!</p>
+                <button id="kirimProyekButton" class="submit-button">
+                  Disini<span class="arrow">&rarr;</span>
+                </button>
+              </div>
+              <div class="submit-image">
+                <img src="./assets/image/polnep1.jpg" alt="Submit Your Work">
+              </div>
             </div>
-        </section>
+          </section>
+          
+          <!-- Popup Overlay -->
+          <div id="popup" class="popup-overlay">
+            <div class="popup-content">
+              <span class="popup-close" id="popupClose">&times;</span>
+              <div class="popup-warning-icon">⚠️</div>
+              <h3>Perhatian</h3>
+              <p>Pastikan untuk login terlebih dahulu untuk mengirim project dan karya.</p>
+            </div>
+          </div>
+
+          <script>
+            const kirimProyekButton = document.getElementById('kirimProyekButton');
+            const popup = document.getElementById('popup');
+            const popupClose = document.getElementById('popupClose');
+          
+            // Show popup when the button is clicked
+            kirimProyekButton.addEventListener('click', () => {
+              popup.style.display = 'flex';
+            });
+          
+            // Close popup when the close button is clicked
+            popupClose.addEventListener('click', () => {
+              popup.style.display = 'none';
+            });
+          
+            // Close popup when clicking outside the content
+            window.addEventListener('click', (event) => {
+              if (event.target === popup) {
+                popup.style.display = 'none';
+              }
+            });
+          </script>
 
         <script>
             // Ambil elemen-elemen yang dibutuhkan
