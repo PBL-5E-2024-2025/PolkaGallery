@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchProjects() {
     const { data, error } = await supabaseClient
         .from('project')
-        .select('judul, deskripsi, tahun, jenis_project, link_project, link_video, url_image, tools, kontak_mahasiswa')
+        .select('judul, deskripsi, tahun, jenis_project, link_project, link_video, url_image, tools, kontak_mahasiswa, nama_mhs')
         .eq('jenis_project', 'TA'); // Add this line to filter projects by 'TA'
 
     if (error) {
@@ -34,6 +34,7 @@ async function fetchProjects() {
             <td><img src="${project.url_image}" alt="Gambar Proyek" width="50"></td>
             <td>${project.tools}</td>
             <td>${project.kontak_mahasiswa}</td>
+            <td>${project.nama_mhs}</td>
             <td><button onclick="editProject(${project.id_project})">Edit</button>
                 <button onclick="deleteProject(${project.id_project})">Hapus</button>
                 <button onclick="postProject(${project.id_project})">Post</button></td>
