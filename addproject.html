@@ -71,6 +71,7 @@
             </div>
 
             <div class="button-container">
+                <button type="button" class="delete-button">Hapus Data</button>
                 <button type="submit" class="submit-button">Kirim</button>
             </div>
         </form>
@@ -83,7 +84,7 @@
         // Supabase credentials
         const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
-        const supabase = createClient(supabaseUrl, supabaseKey);
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
 
         const projectForm = document.getElementById('projectForm');
 
@@ -95,17 +96,17 @@
             const formData = new FormData(projectForm);
             const judul = formData.get('judul');
             const deskripsi = formData.get('deskripsi');
-            const nama = formData.get('nama');
+            const nama = formData.get('nama_mhs');
             const dosen = formData.get('dosen');
             const tools = formData.get('tools');
             const tahun = formData.get('tahun');
-            const kategori = formData.get('kategori');
-            const linkProject = formData.get('linkProject');
-            const kontak = formData.get('kontak');
-            const gambar = formData.get('gambar');
+            const kategori = formData.get('jenis_project');
+            const linkProject = formData.get('link_project');
+            const kontak = formData.get('kontak_mahasiswa');
+            const gambar = formData.get('url_image');
 
             // Upload the image to the Supabase bucket
-            const { data: uploadData, error: uploadError } = await supabase
+            const { data: uploadData, error: uploadError } = await supabaseClient
                 .storage
                 .from('project_images')
                 .upload(`images/${judul}-${Date.now()}`, gambar);
@@ -119,20 +120,20 @@
             const imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
 
             // Insert the project data into the Supabase table
-            const { data: projectData, error: insertError } = await supabase
+            const { data: projectData, error: insertError } = await supabaseClient
                 .from('project')
                 .insert([
                     {
                         judul,
                         deskripsi,
-                        nama,
+                        nama_mhs,
                         dosen,
                         tools,
                         tahun,
-                        kategori,
+                        jenis_project: kategori,
                         link_project: linkProject,
                         kontak_mahasiswa: kontak,
-                        link_gambar: imageUrl
+                        url_image: imageUrl
                     }
                 ]);
 
