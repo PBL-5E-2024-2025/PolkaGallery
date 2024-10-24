@@ -603,41 +603,137 @@ main {
 /* Banner biru */
 .blue-banner {
     background-color: #0C3790;
-    height: 200px;
-    width: 100%; /* Lebar penuh */
+    height: 180px; /* Kurangi sedikit tinggi banner */
+    width: 100%; 
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     position: relative;
-    margin-top: 0; /* Pastikan tidak ada margin antara navbar dan banner */
+    margin-top: -30px; /* Naikkan banner sedikit */
     z-index: 1;
 }
 
+/* Kotak putih di atas banner biru */
 /* Kotak putih di atas banner biru */
 .white-box {
     background-color: #fff;
     width: 100%;
     max-width: 1000px;
-    height: auto; /* Ketinggian fleksibel sesuai konten */
-    margin: -100px auto 20px; /* Posisikan kotak di atas banner */
+    height: auto; 
+    margin: -110px auto 20px; /* Naikkan lebih banyak lagi */
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    z-index: 2; /* Pastikan kotak putih muncul di atas banner */
+    z-index: 2; 
 }
 
-/* Responsif: Stack elemen-elemen di layar kecil */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        padding: 10px;
-    }
 
+/* Sesuaikan margin dan padding untuk mobile */
+@media (max-width: 768px) {
     .blue-banner {
-        height: 150px; /* Sesuaikan tinggi banner untuk layar kecil */
+        height: 150px; 
+        margin-top: -20px; /* Sesuaikan untuk layar kecil */
     }
 
     .white-box {
-        margin: -75px auto 20px; /* Sesuaikan jarak pada layar kecil */
+        margin: -75px auto 20px;
     }
 }
+
+/* Styling untuk card project */
+.project-card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-color: #f0f0f0;
+}
+
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-category {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #5c67f2;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.project-content {
+    padding: 20px;
+}
+
+.project-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 10px;
+}
+
+.project-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.project-author {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.project-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.project-likes, .project-save {
+    display: flex;
+    align-items: center;
+}
+
+.like-icon, .save-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: #5c67f2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #4a53e0;
+}
+
+.search-box {
+    margin-bottom: 80px; /* Atur jarak antara white-box dengan card project */
+}
+
