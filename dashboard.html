@@ -184,6 +184,48 @@
         }
     }
     </script>    
+    
+    <script>
+        async function fetchVisitorData() {
+            try {
+                // Mengambil jumlah kunjungan per bulan
+                const { data, error } = await supabaseClient
+                    .from('visitors')
+                    .select('visit_time');
+    
+                if (error) {
+                    console.error('Error fetching visitor data:', error);
+                    return;
+                }
+    
+                // Memproses data untuk menghitung jumlah kunjungan per bulan
+                const monthlyVisits = {};
+                data.forEach(visit => {
+                    const month = new Date(visit.visit_time).toLocaleString('default', { month: 'long' });
+                    if (!monthlyVisits[month]) {
+                        monthlyVisits[month] = 0;
+                    }
+                    monthlyVisits[month]++;
+                });
+    
+                // Siapkan data untuk grafik
+                const labels = Object.keys(monthlyVisits);
+                const dataPoints = Object.values(monthlyVisits);
+    
+                // Perbarui data di chart
+                visitorChart.data.labels = labels;
+                visitorChart.data.datasets[0].data = dataPoints;
+                visitorChart.update();
+    
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    
+        // Panggil fungsi fetchVisitorData saat halaman dashboard di-load
+        document.addEventListener('DOMContentLoaded', fetchVisitorData);
+    </script>
+    
 
 </body>
 </html>
