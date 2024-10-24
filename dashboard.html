@@ -8,7 +8,7 @@
     <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script> <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 
 <body>
@@ -27,17 +27,15 @@
                 <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
             </div>
         
-            <!-- Profil Admin dengan Dropdown -->
             <div class="profile-container">
                 <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
-                <span class="user-info" id="username">Guest</span> <!-- Nama pengguna yang login -->
+                <span class="user-info" id="username">Guest</span>
                 <div class="dropdown-content" id="dropdown-content">
                     <a href="#">Lihat Profil</a>
                     <a href="login.html" id="logout">Keluar</a>
                 </div>
             </div>
         </div>
-        
     </header>
     <div class="blue-banner"></div>
     <div class="statistics-container">
@@ -94,138 +92,127 @@
     </div>
 
     <script>
-        // Ambil context dari elemen canvas
-        const ctx = document.getElementById('visitorChart').getContext('2d');
-    
-        // Membuat diagram menggunakan Chart.js
-        const visitorChart = new Chart(ctx, {
-            type: 'line', // Tipe diagram (bisa juga bar, pie, dll)
-            data: {
-                labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni'], // Bulan atau kategori lain
-                datasets: [{
-                    label: 'Jumlah Pengunjung',
-                    data: [500, 1000, 750, 1500, 2000, 1800], // Ganti dengan data pengunjung
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)', // Warna background area
-                    borderColor: 'rgba(54, 162, 235, 1)', // Warna garis
-                    borderWidth: 2 // Ketebalan garis
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true // Memulai dari nilai 0 di sumbu Y
+        // Initialize Supabase client
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProjectCounts();
+            fetchCommentData();
+        });
+
+        async function fetchProjectCounts() {
+            try {
+                const { data: pblData, error: pblError } = await supabaseClient
+                    .from('project')
+                    .select('*', { count: 'exact' })
+                    .eq('jenis_project', 'PBL');
+
+                const { data: lombaData, error: lombaError } = await supabaseClient
+                    .from('project')
+                    .select('*', { count: 'exact' })
+                    .eq('jenis_project', 'Lomba');
+
+                const { data: taData, error: taError } = await supabaseClient
+                    .from('project')
+                    .select('*', { count: 'exact' })
+                    .eq('jenis_project', 'TA');
+
+                if (pblError || lombaError || taError) {
+                    console.error('Error fetching project counts:', pblError || lombaError || taError);
+                    return;
+                }
+
+                document.getElementById('totalPBL').textContent = pblData.length;
+                document.getElementById('totalCompetitions').textContent = lombaData.length;
+                document.getElementById('totalFinalProjects').textContent = taData.length;
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        async function fetchCommentData() {
+            try {
+                const { data, error } = await supabaseClient
+                    .from('feedback')
+                    .select('email, tgl_dikirim');
+
+                if (error) {
+                    console.error('Error fetching comments:', error);
+                    return;
+                }
+
+                // Hitung jumlah komentar
+                const commentCount = data.length;
+
+                // Ambil tanggal komentar
+                const commentDates = data.map(comment => new Date(comment.created_at).toLocaleString('default', { month: 'long' }));
+
+                // Hitung jumlah komentar per bulan
+                const commentsPerMonth = {};
+                commentDates.forEach(date => {
+                    commentsPerMonth[date] = (commentsPerMonth[date] || 0) + 1;
+                });
+
+                // Persiapkan data untuk grafik
+                const labels = Object.keys(commentsPerMonth);
+                const dataPoints = Object.values(commentsPerMonth);
+
+                // Update grafik pengunjung
+                updateVisitorChart(labels, dataPoints);
+                
+                // Tampilkan jumlah komentar
+                console.log('Jumlah Pengunjung:', commentCount);
+                console.log('Email dan Tanggal Komentar:', data);
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function updateVisitorChart(labels, dataPoints) {
+            const ctx = document.getElementById('visitorChart').getContext('2d');
+
+            const visitorChart = new Chart(ctx, {
+                type: 'line', // Tipe diagram
+                data: {
+                    labels: labels, // Label bulan
+                    datasets: [{
+                        label: 'Jumlah Pengunjung',
+                        data: dataPoints, // Data jumlah komentar
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
                     }
                 }
-            }
-        });
-    </script>
-    
+            });
+        }
+    </script> 
+
     <script>
-        // Ambil elemen profil dan dropdown
+        // Profil dropdown
         const profilePic = document.getElementById('profile-pic');
         const dropdownContent = document.getElementById('dropdown-content');
 
-        // Event listener untuk toggle dropdown saat gambar profil diklik
         profilePic.addEventListener('click', function() {
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
         window.onclick = function(event) {
             if (!event.target.matches('#profile-pic')) {
                 dropdownContent.style.display = 'none';
             }
         }
     </script>
-
-<script>
-    // Initialize Supabase client
-    const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co'; // Ganti dengan Supabase URL kamu
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0'; // Ganti dengan Supabase API Key kamu
-    const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        fetchProjectCounts();
-    });
-    
-    async function fetchProjectCounts() {
-        try {
-            // Menghitung jumlah Total PBL
-            const { data: pblData, error: pblError } = await supabaseClient
-                .from('project')
-                .select('*', { count: 'exact' })
-                .eq('jenis_project', 'PBL');
-    
-            // Menghitung jumlah Total Lomba
-            const { data: lombaData, error: lombaError } = await supabaseClient
-                .from('project')
-                .select('*', { count: 'exact' })
-                .eq('jenis_project', 'Lomba');
-    
-            // Menghitung jumlah Total Tugas Akhir
-            const { data: taData, error: taError } = await supabaseClient
-                .from('project')
-                .select('*', { count: 'exact' })
-                .eq('jenis_project', 'TA');
-    
-            if (pblError || lombaError || taError) {
-                console.error('Error fetching project counts:', pblError || lombaError || taError);
-                return;
-            }
-    
-            // Tampilkan jumlah di dashboard
-            document.getElementById('totalPBL').textContent = pblData.length;
-            document.getElementById('totalCompetitions').textContent = lombaData.length;
-            document.getElementById('totalFinalProjects').textContent = taData.length;
-    
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
-    </script>    
-    
-    <script>
-        async function fetchVisitorData() {
-            try {
-                // Mengambil jumlah kunjungan per bulan
-                const { data, error } = await supabaseClient
-                    .from('visitors')
-                    .select('visit_time');
-    
-                if (error) {
-                    console.error('Error fetching visitor data:', error);
-                    return;
-                }
-    
-                // Memproses data untuk menghitung jumlah kunjungan per bulan
-                const monthlyVisits = {};
-                data.forEach(visit => {
-                    const month = new Date(visit.visit_time).toLocaleString('default', { month: 'long' });
-                    if (!monthlyVisits[month]) {
-                        monthlyVisits[month] = 0;
-                    }
-                    monthlyVisits[month]++;
-                });
-    
-                // Siapkan data untuk grafik
-                const labels = Object.keys(monthlyVisits);
-                const dataPoints = Object.values(monthlyVisits);
-    
-                // Perbarui data di chart
-                visitorChart.data.labels = labels;
-                visitorChart.data.datasets[0].data = dataPoints;
-                visitorChart.update();
-    
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-    
-        // Panggil fungsi fetchVisitorData saat halaman dashboard di-load
-        document.addEventListener('DOMContentLoaded', fetchVisitorData);
-    </script>
-    
-
 </body>
 </html>
