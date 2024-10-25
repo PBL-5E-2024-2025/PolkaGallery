@@ -93,51 +93,41 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Ensure that the Supabase client is created only after the page is fully loaded
             const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
             const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
             const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
     
+            // Handle form submission
             document.getElementById('register-form').addEventListener('submit', async function (event) {
-                event.preventDefault();
+                event.preventDefault(); // Prevent default form submission
+    
+                // Retrieve values from form
                 const nama = document.getElementById('nama').value;
-                const nim = document.getElementById('nim').value;
-                const noHp = document.getElementById('no_hp').value;
                 const username = document.getElementById('username').value;
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
+                const nim = document.getElementById('nim').value;
+                const no_hp = document.getElementById('no_hp').value;
+                
+                // Debug: Log data to be inserted
+                console.log('Data yang akan dimasukkan:', { nama, username, email, password, nim, no_hp });
     
-                console.log('Data yang akan dimasukkan:', { nama, nim, noHp, username, email, password });
-    
-                // Insert data into the users table, including the nama column, and retrieve the inserted row
-                const { data: userData, error: userError } = await supabaseClient
+                // Insert data into Supabase
+                const { data, error } = await supabaseClient
                     .from('users')
                     .insert([
-                        { nama: nama, username: username, email: email, password: password, role: 'mahasiswa', no_hp: noHp }
-                    ])
-                    .select(); // Fetches the inserted row
-
-                if (userError) {
-                    console.error('Error inserting data into users:', userError);
-                    alert(`Failed to register (users table). Error: ${userError.message}`);
-                    return;
-                }
-
-                console.log('User data successfully inserted:', userData);
-                const userId = userData[0].id;
-
-                // Insert data into the mahasiswa table
-                const { error: mhsError } = await supabaseClient
-                    .from('mahasiswa')
-                    .insert([
-                        { nim: nim, nama_mahasiswa: nama, no_hp: noHp, user_id: userId, email: email }
+                        { nama: nama, username: username, email: email, password: password, nim: nim, no_hp: no_hp, role: 'mahasiswa' }
                     ]);
-
-                if (mhsError) {
-                    console.error('Error inserting data into mahasiswa:', mhsError);
-                    alert(`Failed to register (mahasiswa table). Error: ${mhsError.message}`);
+    
+                // Debug: Check response from Supabase
+                if (error) {
+                    console.error('Error inserting data:', error.message);
+                    alert('Failed to register. Please try again.');
                 } else {
-                    console.log('Data successfully inserted into mahasiswa:', userData);
+                    console.log('Data berhasil dimasukkan:', data);  // Debug: Check inserted data
                     alert('Registration successful!');
+                    // Redirect to login page after successful registration
                     window.location.href = 'login.html';
                 }
             });

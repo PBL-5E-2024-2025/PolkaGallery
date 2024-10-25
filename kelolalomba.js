@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchProjects() {
     const { data, error } = await supabaseClient
         .from('project')
-        .select('judul, deskripsi, tahun, jenis_project, link_project, link_video, url_image, tools, kontak_mahasiswa, nama_mhs, skala, peringkat')
+        .select('judul, deskripsi, tahun, dosen, jenis_project, link_project, link_video, url_image, tools, kontak_mahasiswa, nama_mhs, skala, peringkat')
         .eq('jenis_project', 'Lomba'); // Add this line to filter projects by 'Lomba'
 
     if (error) {
@@ -27,16 +27,17 @@ async function fetchProjects() {
         row.innerHTML = `
             <td>${project.judul}</td>
             <td>${project.deskripsi}</td>
+            <td>${project.nama_mhs}</td>
+            <td>${project.dosen}</td>
+            <td>${project.tools}</td>
             <td>${project.tahun}</td>
             <td>${project.jenis_project}</td>
-            <td><a href="${project.link_project}" target="_blank">Link Project</a></td>
-            <td><a href="${project.link_video}" target="_blank">Link Video</a></td>
-            <td><img src="${project.url_image}" alt="Gambar Proyek" width="50"></td>
-            <td>${project.tools}</td>
-            <td>${project.kontak_mahasiswa}</td>
-            <td>${project.nama_mhs}</td>
             <td>${project.skala}</td>
             <td>${project.peringkat}</td>
+            <td><a href="${project.link_project}" target="_blank">Link Project</a></td>
+            <td><a href="${project.link_video}" target="_blank">Link Video</a></td>
+            <td>${project.kontak_mahasiswa}</td>
+            <td><img src="${project.url_image}" alt="Gambar Proyek" width="50"></td>
             <td>
                 <button class="edit-button" onclick="openEditProjectModal(${JSON.stringify(project)})">Edit</button>
                 <button class="delete-button" onclick="deleteProject(${project.id_project})">Hapus</button>

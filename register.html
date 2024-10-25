@@ -81,7 +81,9 @@
             <input type="text" id="nama" placeholder="Nama" required>
             <input type="text" id="username" placeholder="Username" required>
             <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="no_hp" placeholder="No. Hp" required>
             <input type="password" id="password" placeholder="Password" required>
+            <input type="text" id="nim" placeholder="NIM (Opsional)">
             <button type="submit">Register</button>
         </form>
         <div class="extra-text">
@@ -91,40 +93,57 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Ensure that the Supabase client is created only after the page is fully loaded
+            // Initialize Supabase client
             const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
             const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
             const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-    
+
             // Handle form submission
             document.getElementById('register-form').addEventListener('submit', async function (event) {
                 event.preventDefault(); // Prevent default form submission
-    
+
                 // Retrieve values from form
                 const nama = document.getElementById('nama').value;
                 const username = document.getElementById('username').value;
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
-    
-                // Debug: Log data to be inserted
-                console.log('Data yang akan dimasukkan:', { nama, username, email, password });
-    
+                const nim = document.getElementById('nim').value; // NIM is optional
+                const no_hp = document.getElementById('no_hp').value; // NIM is optional
+
+                // Check if email already exists
+                const { data: existingUser, error: emailCheckError } = await supabaseClient
+                    .from('users')
+                    .select('*')
+                    .eq('email', email)
+                    .single();
+
+                if (existingUser) {
+                    alert('Email sudah terdaftar. Silakan gunakan email lain.');
+                    return;
+                }
+
+                // Determine role based on NIM field
+                const role = nim ? 'mahasiswa' : 'admin';
+
                 // Insert data into Supabase
                 const { data, error } = await supabaseClient
                     .from('users')
                     .insert([
-                        { nama: nama, username: username, email: email, password: password, role: 'mahasiswa' }
+                        { nama: nama, username: username, email: email, password: password, nim: nim || null, no_hp: no_hp || null, role: role }
                     ]);
-    
-                // Debug: Check response from Supabase
+
                 if (error) {
                     console.error('Error inserting data:', error.message);
                     alert('Failed to register. Please try again.');
                 } else {
-                    console.log('Data berhasil dimasukkan:', data);  // Debug: Check inserted data
                     alert('Registration successful!');
-                    // Redirect to login page after successful registration
-                    window.location.href = 'login.html';
+
+                    // Redirect to appropriate page based on role
+                    if (role === 'mahasiswa') {
+                        window.location.href = 'home.html';
+                    } else {
+                        window.location.href = 'dashboard.html';
+                    }
                 }
             });
         });
