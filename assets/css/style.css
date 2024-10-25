@@ -467,32 +467,7 @@ footer {
     background-color: #0056b3;
 }
 
-.blue-banner {
-    margin-top: 100px; /* Memberikan ruang di bawah header */
-}
-.blue-banner {
-    background-color: #0C3790;
-    height: 200px;
-    width: 100%;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    position: relative;
-    margin-top: 0; /* Remove any margin between the navbar and banner */
-    z-index: 1;
-}
 
-.white-box {
-    background-color: #fff;
-    width: 100%;
-    max-width: 1000px;
-    height: auto; /* Let the height adapt to the content */
-    margin: -100px auto 20px; /* Adjust margin to ensure it's properly aligned */
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 2;
-}
 
 
 .white-box h2 {
@@ -504,12 +479,6 @@ footer {
 /* Ensure that the Poppins font is applied */
 body {
     font-family: 'Poppins', sans-serif;
-}
-
-/* Style for the blue banner */
-.blue-banner {
-    background-color: #0b3a82;
-    height: 100px;
 }
 
 /* Style for the white box containing the search form */
@@ -603,30 +572,28 @@ main {
 /* Banner biru */
 .blue-banner {
     background-color: #0C3790;
-    height: 180px; /* Kurangi sedikit tinggi banner */
-    width: 100%; 
+    height: 120px;
+    width: 100%;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     position: relative;
-    margin-top: -30px; /* Naikkan banner sedikit */
+    margin-top: 80px; /* Pastikan ada ruang di bawah header */
     z-index: 1;
 }
 
-/* Kotak putih di atas banner biru */
-/* Kotak putih di atas banner biru */
 .white-box {
     background-color: #fff;
     width: 100%;
     max-width: 1000px;
     height: auto; 
-    margin: -110px auto 20px; /* Naikkan lebih banyak lagi */
+    margin: -150px auto 20px; /* Naikkan lebih banyak lagi */
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 2; 
+    margin-bottom: 60px;
 }
-
 
 /* Sesuaikan margin dan padding untuk mobile */
 @media (max-width: 768px) {
@@ -641,48 +608,68 @@ main {
 }
 
 /* Styling untuk card project */
-.project-card {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+/* Styling untuk Main Container */
+main {
+    padding: 20px;
+}
+
+/* Container untuk kartu proyek menggunakan Grid */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Tiga kolom atau lebih */
+    gap: 20px; /* Jarak antar kartu */
+    padding: 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+    gap: 20px; /* Jarak antar card */
     margin: 20px;
-    font-family: 'Poppins', sans-serif;
+}
+
+.project-card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .project-image {
     position: relative;
-    width: 100%;
-    height: 180px;
-    background-color: #f0f0f0;
 }
 
-.project-img {
+.project-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
 }
 
 .project-category {
     position: absolute;
     top: 10px;
     left: 10px;
-    background-color: #5c67f2;
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
+    border-radius: 4px;
 }
 
 .project-content {
-    padding: 20px;
+    padding: 15px;
 }
+
 
 .project-title {
     font-size: 18px;
     font-weight: bold;
-    margin: 0 0 10px;
+    margin-bottom: 10px;
 }
 
 .project-description {
@@ -698,6 +685,7 @@ main {
     margin-bottom: 15px;
 }
 
+/* Bagian Tindakan (Likes & Save) */
 .project-actions {
     display: flex;
     justify-content: space-between;
@@ -708,12 +696,6 @@ main {
 .project-likes, .project-save {
     display: flex;
     align-items: center;
-}
-
-.like-icon, .save-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 5px;
 }
 
 .project-link {
@@ -732,8 +714,3 @@ main {
 .project-link:hover {
     background-color: #4a53e0;
 }
-
-.search-box {
-    margin-bottom: 80px; /* Atur jarak antara white-box dengan card project */
-}
-

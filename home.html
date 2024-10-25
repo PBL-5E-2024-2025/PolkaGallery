@@ -11,42 +11,42 @@
     <style>
         /* Tombol Kirim Proyek */
         .popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
 
-  /* Popup Content */
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    text-align: center;
-    position: relative;
-  }
+        /* Popup Content */
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
 
-  /* Warning Icon */
-  .popup-warning-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-  }
+        /* Warning Icon */
+        .popup-warning-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
 
-  /* Close Button */
-  .popup-close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 25px;
-    cursor: pointer;
-  }
+        /* Close Button */
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
         
         .kirim-btn {
             background-color: #0C3790;
@@ -212,31 +212,86 @@
                 <h1>Politeknik Project Showcase</h1>
                 <a href="./gallery.html" class="button"><strong>Lihat Selengkapnya</strong></a>
             </div>
-        </section> 
+        </section>        
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
+                    <span class="project-category">Aplikasi</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
+                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
+                    <p class="project-author">By Rizky Puspita Sari</p>
+                    <div class="project-actions">
+                        <div class="project-likes">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                            </svg>
+                            <span>1,2rb</span>
+                        </div>
+                        <div class="project-save">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Lihat Project</a>
+                </div>
+            </div>
 
-        <section class="projects">
-            <div class="project">
-                <h2><a href="/Website/project/Mahasiswa/Kiki.html" class="project-link">Project Mahasiswa 1<span class="arrow"></span></a></h2>
-                <figure>
-                    <img src="/Website/project/Mahasiswa/picture/Website Portofolio Kiki.png" alt="Ramadhan Salihan Pratama">
-                    <figcaption>Rizky Puspita Sari<br>D3 Teknik Informatika</figcaption>
-                </figure>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
+                    <span class="project-category">Aplikasi</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
+                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
+                    <p class="project-author">By Rizky Puspita Sari</p>
+                    <div class="project-actions">
+                        <div class="project-likes">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                            </svg>
+                            <span>1,2rb</span>
+                        </div>
+                        <div class="project-save">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Lihat Project</a>
+                </div>
             </div>
-            <div class="project">
-                <h2><a href="/Website/project/Mahasiswa/era.html" class="project-link">Project Mahasiswa 2<span class="arrow"></span></a></h2>
-                <figure>
-                    <img src="/Website/project/Mahasiswa/picture/Website Era Mockup.png" alt="Tim Horee">
-                    <figcaption>Helio Caesar<br>D3 Teknik Informatika</figcaption>
-                </figure>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
+                    <span class="project-category">Aplikasi</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
+                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
+                    <p class="project-author">By Rizky Puspita Sari</p>
+                    <div class="project-actions">
+                        <div class="project-likes">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+                            </svg>
+                            <span>1,2rb</span>
+                        </div>
+                        <div class="project-save">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Lihat Project</a>
+                </div>
             </div>
-            <div class="project">
-                <h2><a href="/Website/project/Pbl/galeri.html" class="project-link">Project PBL<span class="arrow"></span></a></h2>
-                <figure>
-                    <img src="/Website/project/Pbl/picture/Aplikasi Gallery App.png" alt="Tim Onar Project">
-                    <figcaption>Dika Muzdalifah<br> D3 Teknik Informatika</figcaption>
-                </figure>
-            </div>
-        </section>
+        </div>
         <!-- New Section -->
         <section class="submit-container">
             <div class="submit-content">
@@ -328,7 +383,29 @@
             });
         </script>
 
-<script src="log.js"></script>
+    <script>
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+        const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function logVisit() {
+            const { data, error } = await supabaseClient
+                .from('visitors')
+                .insert([{ page_name: 'Homepage' }]);
+
+            if (error) {
+                console.error('Error logging visit:', error);
+            } else {
+                console.log('Visit logged:', data);
+            }
+        }
+
+        // Panggil fungsi logVisit saat halaman di-load
+        window.addEventListener('DOMContentLoaded', logVisit);
+    </script>
+
+
+    <script src="log.js"></script>
               
     </main>
 </body>
