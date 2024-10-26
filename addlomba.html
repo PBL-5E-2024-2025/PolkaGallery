@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/addlomba.css">
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/image/logo_polka.ico">
     <title>Tambah Lomba</title>
 </head>
 <body>
@@ -17,46 +17,62 @@
         <h2>Proyek Lomba</h2>
     </div>
 
-    <!-- Form komentar di bawah container putih -->
+    <!-- Form pengiriman data -->
     <div class="container">
-        <form id="commentForm">
+        <form id="commentForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="judul">Judul</label>
                 <input type="text" id="judul" name="judul" placeholder="Nama Proyek" required>
             </div>
-    
-            <div class="form-group" id="internalUpload">
-                <label for="gambar">Pilih Gambar</label>
-                <input type="file" id="gambar" name="gambar" accept="image/*">
-            </div>
-    
-            <div class="form-group" id="externalUpload" style="display: none;">
-                <label for="gambarURL">URL Gambar</label>
-                <input type="url" id="gambarURL" name="gambarURL" placeholder="https://example.com/gambar.jpg">
-            </div>
-    
+
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
                 <textarea id="deskripsi" name="deskripsi" rows="4" placeholder="Deskripsi proyek" required></textarea>
             </div>
 
             <div class="form-group">
-                <label for="nama">Pengembang Project</label>
-                <input type="text" id="nama" name="nama" placeholder="Nama Pengembang" required>
+                <label for="nama_mhs">Pengembang Project</label>
+                <input type="text" id="nama_mhs" name="nama_mhs" placeholder="Nama Pengembang" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="dosen">Dosen Pembimbing</label>
                 <input type="text" id="dosen" name="dosen" placeholder="Dosen Pembimbing" required>
             </div>
 
             <div class="form-group">
+                <label for="tools">Tools</label>
+                <input type="text" id="tools" name="tools" placeholder="Tools yang digunakan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tahun">Tanggal</label>
+                <input type="date" id="tahun" name="tahun" required>
+            </div>
+
+            <!-- Ubah Kategori menjadi default "PBL" dan tidak bisa diubah -->
+            <div class="form-group">
+                <label for="jenis_project">Kategori</label>
+                <input type="text" id="jenis_project" name="jenis_project" value="Lomba" readonly required>
+            </div>
+
+            <div class="form-group">
+                <label for="linkProject">Link Project</label>
+                <input type="text" id="linkProject" name="linkProject" placeholder="Link Project" required>
+            </div>
+
+            <div class="form-group">
+                <label for="linkVideo">Link Video</label>
+                <input type="text" id="linkVideo" name="linkVideo" placeholder="Link Video Promosi" required>
+            </div>
+
+            <div class="form-group">
                 <label for="skala">Skala Lomba</label>
                 <select id="skala" name="skala" required>
                     <option value="" disabled selected>Pilih Skala Lomba</option>
-                    <option value="Lokal">Lokal</option>
-                    <option value="Nasional">Nasional</option>
-                    <option value="Internasional">Internasional</option>
+                    <option value="lokal">Lokal</option>
+                    <option value="nasional">Nasional</option>
+                    <option value="internasional">Internasional</option>
                 </select>
             </div>
 
@@ -64,75 +80,16 @@
                 <label for="peringkat">Peringkat</label>
                 <select name="peringkat" id="peringkat" required>
                     <option value="" disabled selected>Peringkat</option>
-                    <option value="peringkat1">Juara 1</option>
-                    <option value="peringkat2">Juara 2</option>
-                    <option value="peringkat3">Juara 3</option>
+                    <option value="peringkat 1">Juara 1</option>
+                    <option value="peringkat 2">Juara 2</option>
+                    <option value="peringkat 3">Juara 3</option>
+                    <option value="semifinal">Semi Final</option>
                 </select>
-
             </div>
 
-            <div class="form-group">
-                <label for="tools">Tools</label>
-                <div class="dropdown">
-                    <button type="button" class="dropbtn" id="dropdownButton">Pilih Tools</button>
-                    <div class="dropdown-content" id="dropdownContent">
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="Dart" checked>
-                            <span class="checkmark"></span>
-                            Dart
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="HTML & CSS">
-                            <span class="checkmark"></span>
-                            HTML & CSS
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="JavaScript">
-                            <span class="checkmark"></span>
-                            JavaScript
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="CorelDraw">
-                            <span class="checkmark"></span>
-                            CorelDraw
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="Photoshop">
-                            <span class="checkmark"></span>
-                            Photoshop
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="Figma">
-                            <span class="checkmark"></span>
-                            Figma
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="Supabase">
-                            <span class="checkmark"></span>
-                            Supabase
-                        </label>
-                        <label class="custom-checkbox">
-                            <input type="checkbox" value="Node JS">
-                            <span class="checkmark"></span>
-                            Node JS
-                        </label>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <label for="tahun">Tahun</label>
-                <input type="text" id="tahun" name="tahun" placeholder="Tahun" required>
-            </div>
-    
-            <div class="form-group">
-                <label for="kategori">Kategori</label>
-                <input type="text" id="kategori" name="kategori" placeholder="Kategori" required>
-            </div>
-    
-            <div class="form-group">
-                <label>Link Project</label>
-                <input type="text" id="linkProject" name="linkProject" placeholder="Link Video Promosi / Video Demo / Project" required>
+            <div class="form-group" id="internalUpload">
+                <label for="gambar">Pilih Gambar</label>
+                <input type="file" id="gambar" name="gambar" accept="image/*" required>
             </div>
     
             <div class="form-group">
@@ -144,6 +101,82 @@
                 <button type="button" class="delete-button">Hapus Data</button>
                 <button type="submit" class="submit-button">Kirim</button>
             </div>
+        </form>
     </div>
+
+    <script type="module">
+        // Import Supabase client
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        // Supabase credentials
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+        const commentForm = document.getElementById('commentForm');
+
+        // Handle form submission
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(commentForm);
+            const judul = formData.get('judul');
+            const deskripsi = formData.get('deskripsi');
+            const nama_mhs = formData.get('nama_mhs');
+            const dosen = formData.get('dosen');
+            const tools = formData.get('tools');
+            const tahun = formData.get('tahun');
+            const jenis_project = "Lomba"; // Set kategori sebagai "Lomba"
+            const skala = formData.get('skala');
+            const peringkat = formData.get('peringkat');
+            const link_project = formData.get('linkProject');
+            const link_video = formData.get('linkVideo');
+            const kontak_mahasiswa = formData.get('kontak');
+            const gambar = formData.get('gambar'); // Mendapatkan file gambar
+
+            try {
+                // Step 1: Upload the image to the Supabase bucket
+                const { data: uploadData, error: uploadError } = await supabaseClient
+                    .storage
+                    .from('project_images')
+                    .upload(`images/${judul}-${Date.now()}.jpg`, gambar);
+
+                if (uploadError) throw new Error('Error mengunggah gambar: ' + uploadError.message);
+
+                // Step 2: Construct the image URL after upload
+                const imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
+
+                // Step 3: Insert the project data into the Supabase table
+                const { data: projectData, error: insertError } = await supabaseClient
+                    .from('project')
+                    .insert([
+                        {
+                            judul,
+                            deskripsi,
+                            nama_mhs,
+                            dosen,
+                            tools,
+                            tahun,
+                            jenis_project,
+                            skala,
+                            peringkat,
+                            link_project,
+                            link_video,
+                            url_image: imageUrl,
+                            kontak_mahasiswa
+                        }
+                    ]);
+
+                if (insertError) throw new Error('Error mengirimkan proyek: ' + insertError.message);
+
+                // Success message
+                alert('Project berhasil dikirim!');
+                commentForm.reset();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
 </body>
 </html>

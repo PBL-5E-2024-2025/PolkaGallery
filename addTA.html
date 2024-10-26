@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/addTA.css">
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/image/logo_polka.ico">
     <title>Tambah Tugas Akhir</title>
 </head>
 <body>
@@ -17,24 +17,14 @@
         <h2>Tugas Akhir</h2>
     </div>
 
-    <!-- Form komentar di bawah container putih -->
+    <!-- Form pengiriman data -->
     <div class="container">
-        <form id="commentForm">
+        <form id="commentForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="judul">Judul Tugas Akhir</label>
                 <input type="text" id="judul" name="judul" placeholder="Judul Tugas Akhir" required>
             </div>
-    
-            <div class="form-group" id="internalUpload">
-                <label for="gambar">Pilih Gambar</label>
-                <input type="file" id="gambar" name="gambar" accept="image/*">
-            </div>
-    
-            <div class="form-group" id="externalUpload" style="display: none;">
-                <label for="gambarURL">URL Gambar</label>
-                <input type="url" id="gambarURL" name="gambarURL" placeholder="https://example.com/gambar.jpg">
-            </div>
-    
+
             <div class="form-group">
                 <label for="deskripsi">Deskripsi</label>
                 <textarea id="deskripsi" name="deskripsi" rows="4" placeholder="Deskripsi proyek" required></textarea>
@@ -42,9 +32,9 @@
 
             <div class="form-group">
                 <label for="nama">Pengembang TA</label>
-                <input type="text" id="nama" name="nama" placeholder="Nama Pengembang" required>
+                <input type="text" id="nama_mhs" name="nama_mhs" placeholder="Nama Pengembang" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="dosen">Dosen Pembimbing</label>
                 <input type="text" id="dosen" name="dosen" placeholder="Dosen Pembimbing" required>
@@ -56,42 +46,42 @@
                     <button type="button" class="dropbtn" id="dropdownButton">Pilih Tools</button>
                     <div class="dropdown-content" id="dropdownContent">
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="Dart" checked>
+                            <input type="checkbox" name="tools" value="Dart" checked>
                             <span class="checkmark"></span>
                             Dart
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="HTML & CSS">
+                            <input type="checkbox" name="tools" value="HTML & CSS">
                             <span class="checkmark"></span>
                             HTML & CSS
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="JavaScript">
+                            <input type="checkbox" name="tools" value="JavaScript">
                             <span class="checkmark"></span>
                             JavaScript
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="CorelDraw">
+                            <input type="checkbox" name="tools" value="CorelDraw">
                             <span class="checkmark"></span>
                             CorelDraw
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="Photoshop">
+                            <input type="checkbox" name="tools" value="Photoshop">
                             <span class="checkmark"></span>
                             Photoshop
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="Figma">
+                            <input type="checkbox" name="tools" value="Figma">
                             <span class="checkmark"></span>
                             Figma
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="Supabase">
+                            <input type="checkbox" name="tools" value="Supabase">
                             <span class="checkmark"></span>
                             Supabase
                         </label>
                         <label class="custom-checkbox">
-                            <input type="checkbox" value="Node JS">
+                            <input type="checkbox" name="tools" value="Node JS">
                             <span class="checkmark"></span>
                             Node JS
                         </label>
@@ -101,28 +91,109 @@
     
             <div class="form-group">
                 <label for="tahun">Tahun</label>
-                <input type="text" id="tahun" name="tahun" placeholder="Tahun" required>
+                <input type="date" id="tahun" name="tahun" placeholder="Tahun" required>
             </div>
-    
+
             <div class="form-group">
-                <label for="kategori">Kategori</label>
-                <input type="text" id="kategori" name="kategori" placeholder="Kategori" required>
+                <label for="jenis_project">Kategori</label>
+                <input type="text" id="jenis_project" name="jenis_project" value="TA" readonly required>
             </div>
     
             <div class="form-group">
                 <label>Link Project</label>
-                <input type="text" id="linkProject" name="linkProject" placeholder="Link Video Promosi / Video Demo / Project" required>
+                <input type="text" id="link_project" name="link_project" placeholder="Link Project" required>
+            </div>
+
+            <div class="form-group">
+                <label>Link Video</label>
+                <input type="text" id="link_video" name="link_video" placeholder="Link Video" required>
+            </div>
+
+            <div class="form-group" id="internalUpload">
+                <label for="gambar">Pilih Gambar</label>
+                <input type="file" id="gambar" name="gambar" accept="image/*" required>
             </div>
     
             <div class="form-group">
                 <label>Kontak Mahasiswa</label>
-                <input type="text" id="kontak" name="kontak" placeholder="Email/Linkedin" required>
+                <input type="text" id="kontak_mahasiswa" name="kontak_mahasiswa" placeholder="Email/Linkedin" required>
             </div>
 
             <div class="button-container">
                 <button type="button" class="delete-button">Hapus Data</button>
                 <button type="submit" class="submit-button">Kirim</button>
             </div>
+        </form>
     </div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+        const commentForm = document.getElementById('commentForm');
+
+        commentForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(commentForm);
+            const judul = formData.get('judul');
+            const deskripsi = formData.get('deskripsi');
+            const nama_mhs = formData.get('nama_mhs');
+            const dosen = formData.get('dosen');
+            const tahun = formData.get('tahun');
+            const jenis_project = "TA"; // Set kategori sebagai "Lomba"
+            const link_project = formData.get('link_project');
+            const link_video = formData.get('link_video');
+            const kontak_mahasiswa = formData.get('kontak_mahasiswa');
+            const gambar = formData.get('gambar');
+
+            // Mendapatkan semua tools yang dipilih
+            const toolsElements = document.querySelectorAll("input[name='tools']:checked");
+            const tools = Array.from(toolsElements).map(tool => tool.value);
+
+            try {
+                // Step 1: Upload the image to the Supabase bucket
+                const { data: uploadData, error: uploadError } = await supabaseClient
+                    .storage
+                    .from('project_images')
+                    .upload(`images/${judul}-${Date.now()}.jpg`, gambar);
+
+                if (uploadError) throw new Error('Error mengunggah gambar: ' + uploadError.message);
+
+                // Step 2: Construct the image URL after upload
+                const imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
+
+                // Step 3: Insert the project data into the Supabase table
+                const { data: projectData, error: insertError } = await supabaseClient
+                    .from('project')
+                    .insert([
+                        {
+                            judul,
+                            deskripsi,
+                            nama_mhs,
+                            dosen,
+                            tahun,
+                            jenis_project,
+                            link_project,
+                            link_video,
+                            kontak_mahasiswa,
+                            tools,
+                            url_image: imageUrl
+                        }
+                    ]);
+
+                if (insertError) throw new Error('Error mengirimkan proyek: ' + insertError.message);
+
+                // Success message
+                alert('Tugas Akhir berhasil dikirim!');
+                commentForm.reset();
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/addproject.css">
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/image/logo_polka.ico">
     <title>Tambah PBL</title>
 </head>
 <body>
@@ -46,18 +46,14 @@
             </div>
 
             <div class="form-group">
-                <label for="tahun">Tahun</label>
-                <input type="text" id="tahun" name="tahun" placeholder="Tahun" required>
+                <label for="tahun">Tanggal</label>
+                <input type="date" id="tahun" name="tahun" required>
             </div>
 
+            <!-- Ubah Kategori menjadi default "PBL" dan tidak bisa diubah -->
             <div class="form-group">
                 <label for="jenis_project">Kategori</label>
-                <select id="jenis_project" name="jenis_project" required>
-                    <option value="" disabled selected>Pilih Kategori</option>
-                    <option value="PBL">PBL</option>
-                    <option value="Lomba">Lomba</option>
-                    <option value="TA">TA</option>
-                </select>
+                <input type="text" id="jenis_project" name="jenis_project" value="PBL" readonly required>
             </div>
 
             <div class="form-group">
@@ -90,18 +86,18 @@
     <script type="module">
         // Import Supabase client
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-    
+
         // Supabase credentials
         const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
         const supabaseClient = createClient(supabaseUrl, supabaseKey);
-    
+
         const projectForm = document.getElementById('projectForm');
-    
+
         // Handle form submission
         projectForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-    
+
             // Collect form data
             const formData = new FormData(projectForm);
             const judul = formData.get('judul');
@@ -110,53 +106,52 @@
             const dosen = formData.get('dosen');
             const tools = formData.get('tools');
             const tahun = formData.get('tahun');
-            const jenis_project = formData.get('jenis_project');
+            const jenis_project = 'PBL'; // Set kategori sebagai "PBL"
             const link_project = formData.get('linkProject');
             const link_video = formData.get('linkVideo');
             const kontak_mahasiswa = formData.get('kontak');
             const gambar = formData.get('gambar'); // Mendapatkan file gambar
-    
-            // Upload the image to the Supabase bucket
-            const { data: uploadData, error: uploadError } = await supabaseClient
-                .storage
-                .from('project_images')
-                .upload(`images/${judul}-${Date.now()}.jpg`, gambar);
-    
-            if (uploadError) {
-                alert('Error uploading image: ' + uploadError.message);
-                return;
-            }
-    
-            // Get the image URL
-            const imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
-    
-            // Insert the project data into the Supabase table
-            const { data: projectData, error: insertError } = await supabaseClient
-                .from('project')
-                .insert([
-                    {
-                        judul,
-                        deskripsi,
-                        nama_mhs,
-                        dosen,
-                        tools,
-                        tahun,
-                        jenis_project,
-                        link_project,
-                        link_video,
-                        url_image: imageUrl,
-                        kontak_mahasiswa
-                    }
-                ]);
-    
-            if (insertError) {
-                alert('Error submitting project: ' + insertError.message);
-            } else {
-                alert('Project successfully submitted!');
+
+            try {
+                // Step 1: Upload the image to the Supabase bucket
+                const { data: uploadData, error: uploadError } = await supabaseClient
+                    .storage
+                    .from('project_images')
+                    .upload(`images/${judul}-${Date.now()}.jpg`, gambar);
+
+                if (uploadError) throw new Error('Error mengunggah gambar: ' + uploadError.message);
+
+                // Step 2: Construct the image URL after upload
+                const imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
+
+                // Step 3: Insert the project data into the Supabase table
+                const { data: projectData, error: insertError } = await supabaseClient
+                    .from('project')
+                    .insert([
+                        {
+                            judul,
+                            deskripsi,
+                            nama_mhs,
+                            dosen,
+                            tools,
+                            tahun,
+                            jenis_project,
+                            link_project,
+                            link_video,
+                            url_image: imageUrl,
+                            kontak_mahasiswa
+                        }
+                    ]);
+
+                if (insertError) throw new Error('Error mengirimkan proyek: ' + insertError.message);
+
+                // Success message
+                alert('Project berhasil dikirim!');
                 projectForm.reset();
+            } catch (error) {
+                alert(error.message);
             }
         });
     </script>
-    
 </body>
 </html>
