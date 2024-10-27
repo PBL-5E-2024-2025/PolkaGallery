@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <img src="${project.url_image}" alt="Project Image" />
                 <h2>${project.judul}</h2>
                 <p>${project.deskripsi}</p>
-                <p>By ${project.kontak_mahasiswa}</p>
+                <p>Jenis: ${project.jenis_project}</p>
                 <button onclick="location.href='${project.link_project}'">Lihat Project</button>
             `;
 
