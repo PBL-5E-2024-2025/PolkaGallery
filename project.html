@@ -5,281 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tampilan Proyek</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/project.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
-    <style>
-        /* Mengatur gaya untuk halaman */
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            background-color: #f5f5f5; /* Latar belakang abu-abu muda */
-            padding-top: 100px;
-            padding-bottom: 40px; /* Menambahkan ruang di atas untuk menghindari tumpang tindih dengan header */
-        }
-
-        .icon-container {
-            position: absolute;
-            padding-top: 90px;
-            top: 110px; /* Atur posisi tepat di bawah navbar */
-            right: 20px; /* Posisi di sebelah kanan */
-            display: flex; /* Menampilkan ikon secara horizontal */
-            gap: 20px; /* Jarak antar ikon */
-            margin-right: 40px;
-        }
-
-        .love-icon, .mark-icon {
-            font-size: 30px; /* Ukuran ikon */
-            color: #0C3790; /* Warna ikon */
-            cursor: pointer;
-            transition: color 0.3s ease; /* Animasi ketika ikon disentuh */
-        }
-
-        .love-icon:hover, .mark-icon:hover {
-            color: #ff0000; /* Warna ikon saat dihover */
-        }
-
-
-        /* Container untuk tampilan proyek */
-        .project-container {
-            display: flex; /* Mengatur tampilan flex untuk mengatur posisi */
-            border-radius: 10px;
-            justify-content: space-between;
-            overflow: hidden; /* Menghindari elemen keluar dari border */
-            width: 100%; /* Mengatur lebar kontainer */
-            margin: 20px 0; /* Margin vertikal untuk jarak dengan elemen lain */
-        }
-
-        /* Gaya untuk bagian gambar proyek */
-        .project-image-container {
-            flex: 0 0 35%; /* Mengatur agar bagian ini mengambil 35% dari lebar kontainer */
-            display: flex;
-            justify-content: center; /* Pusatkan gambar secara horizontal */
-            align-items: center; /* Pusatkan gambar secara vertikal */
-            padding: 10px; /* Ruang dalam untuk tampilan yang lebih baik */
-            margin-left: 40px;
-            margin-top: 30px;
-        }
-
-        /* Gaya untuk bagian kanan (judul dan deskripsi) */
-        .project-details {
-            flex: 0 0 50%; /* Mengatur agar bagian ini mengambil 65% dari lebar kontainer */
-            padding: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            align-content: center;
-        }
-
-        /* Gaya untuk nama proyek */
-        .project-name {
-            font-size: 25px; /* Ukuran font yang lebih besar */
-            font-weight: 600; /* Bold */
-            margin-bottom: 10px; /* Ruang di bawah nama proyek */
-            margin-right: 100px;
-        }
-
-        /* Gaya untuk garis */
-        .garis {
-            height: 2px; /* Tinggi garis */
-            background-color: #0C3790; /* Warna garis biru */
-            margin-bottom: 10px; /* Ruang di bawah garis */
-        }
-
-        /* Gaya untuk deskripsi proyek */
-        .project-description {
-            font-size: 20px; /* Ukuran font deskripsi */
-            color: #555; /* Warna teks abu-abu gelap */
-        }
-
-        /* Gaya untuk gambar proyek */
-        .project-image {
-            max-width: 100%; /* Atur gambar untuk memenuhi lebar kontainer */
-            height: auto; /* Pertahankan rasio aspek */
-            object-fit: cover; /* Mengatur gambar agar sesuai dengan kontainer */
-        }
-
-        .pengembang-proyek {
-            width: 60%; /* Lebar penuh untuk bagian ini */
-            background-color: #0C3790; /* Warna latar belakang kotak biru */
-            color: white; /* Warna teks putih */
-            padding: 10px; /* Ruang dalam kotak */
-            border-radius: 8px; /* Sudut membulat */
-            margin-top: 10px; /* Ruang di atas kotak */
-            margin-bottom: 20px; /* Ruang di bawah kotak */
-            text-align: center;
-            margin-left: 10px;
-            font-size: 20px; /* Ukuran font */
-        }
-
-        .developer-names {
-            display: flex; /* Menggunakan flexbox untuk tata letak horizontal */
-            align-items: center; /* Mengatur item sejajar di tengah secara vertikal */
-            width: 100%; /* Lebar penuh untuk bagian ini */
-            font-size: 18px; /* Ukuran font untuk nama pengembang */
-            color: #000000; /* Warna teks hitam */
-            text-align: center; /* Pusatkan teks */
-            margin-top: 10px; /* Ruang di atas nama pengembang */
-        }
-
-        .project-profil {
-            width: 50px; /* Ukuran lebar gambar */
-            height: 50px; /* Ukuran tinggi gambar */
-            margin-right: 10px; /* Jarak antara gambar dan teks */
-            margin-left: 60px;
-        }
-
-        .pembimbing {
-            width: 60%;
-            background-color: #0C3790;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 30px;
-            margin-bottom: 20px; /* Ruang di bawah kotak */
-            text-align: center;
-            margin-left: 10px;
-            font-size: 20px;
-        }
-
-        /* Container untuk menggabungkan bagian pengembang dan informasi */
-        .developer-and-info-container {
-            display: flex;
-            justify-content: space-between; /* Membuat informasi berada di sebelah kanan */
-            align-items: flex-start; /* Mengatur agar elemen diatur dari atas */
-            margin-top: 20px;
-            margin-left: 40px; /* Jarak dari sisi kiri layar */
-            margin-right: 40px; /* Jarak dari sisi kanan layar */
-        }
-
-        /* Bagian pengembang proyek */
-        .pengembang-container {
-            flex: 0 0 60%; /* Mengatur agar bagian pengembang mengambil 60% dari lebar kontainer */
-            display: flex;
-            flex-direction: column; /* Elemen pengembang ditampilkan secara vertikal */
-            align-items: flex-start; /* Mengatur elemen di sebelah kiri */
-        }
-
-        /* Bagian informasi */
-        .informasi-container {
-            flex: 0 0 35%; /* Mengatur agar bagian informasi mengambil 35% dari lebar kontainer */
-            margin-right: 30px;
-        }
-
-        .informasi {
-            width: 100%; /* Lebar penuh dalam kontainer */
-            background-color: #0C3790;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 20px;
-            margin-top: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .info-item {
-            display: flex;
-            align-items: center; /* Menyusun elemen secara vertikal */
-            margin-top: 15px;
-            margin-left: 20px; 
-        }
-
-        .info-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-
-        .red-circle {
-            background-color: red;
-        }
-
-        .purple-circle {
-            background-color: rgb(126, 161, 207);
-        }
-
-        .pink-circle {
-            background-color: rgb(255, 239, 96);
-        }
-
-        .info-text {
-            font-size: 18px;
-        }
-
-        .info-text a {
-            color: #0C3790;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .info-text a:hover {
-            text-decoration: underline;
-        }
-
-        .sosial-media-container { /* Jarak dari atas */
-            flex: 0 0 35%; /* Mengatur agar bagian informasi mengambil 35% dari lebar kontainer */
-            margin-right: 30px;
-        }
-
-        .sosial-media {
-            width: 106%; /* Lebar penuh dalam kontainer */
-            background-color: #0C3790;
-            color: white;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 20px;
-            margin-top: 40px;
-        }
-
-        .icon-sosial {
-            margin-top: 10px;
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Jarak antar ikon */
-        }
-
-        .sosial-icon {
-            width: 40px;
-            height: 40px;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script defer src="project.js"></script> <!-- Add this script for dynamic content -->
 </head>
 <body>
 
     <header class="sticky">
-        <div class="logo-title">
-            <div class="logo">
-                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
-            </div>
-            <div class="navbar-title">
-                <span>Polnep 
-                    <br>Karya</span>
-            </div>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" title="Home">Home</a></li>
-                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
-                <li><a href="./contact.html" title="Contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="auth-container">
-            <div class="logos">
-                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
-                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
-            </div>
-            <div class="profile-dropdown" id="profileDropdown" style="display:none;">
-                <img src="./assets/image/user.jpg" alt="Profile" class="profile-img" id="profileImg">
-                <div class="dropdown-content" id="dropdownContent">
-                    <a href="#" id="cekProfil">Cek Profil</a>
-                    <a href="#" id="kirimProyek">Kirim Proyek</a>
-                    <a href="#" id="logout">Keluar</a>
-                </div>
-            </div>
-            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a>
-        </div>
+        <!-- ...Header content... -->
     </header>   
 
     <div class="icon-container">
@@ -290,15 +26,15 @@
     <div class="project-container">
         <!-- Bagian kiri untuk gambar proyek -->
         <div class="project-image-container">
-            <img src="./assets/image/project.png" alt="Gambar Proyek" class="project-image"> <!-- Ganti dengan path ke gambar proyek Anda -->
+            <img src="" alt="Gambar Proyek" class="project-image" id="projectImage"> <!-- Dynamic image -->
         </div>
 
         <!-- Bagian kanan untuk nama proyek dan deskripsi -->
         <div class="project-details">
-            <div class="project-name">Nama Proyek Anda aku suka haha blabla dan suka dan suka dan ska dan haha haha hahaahhhh</div>
+            <div class="project-name" id="projectName">Nama Proyek</div> <!-- Dynamic name -->
             <div class="garis"></div>
-            <div class="project-description">
-                Deskripsi proyek ini memberikan rincian tentang tujuan dan hasil dari proyek tersebut. Ini dapat mencakup informasi seperti teknologi yang digunakan, tantangan yang dihadapi, dan pencapaian penting.
+            <div class="project-description" id="projectDescription">
+                Deskripsi proyek akan dimuat di sini.
             </div>
         </div>
     </div>
@@ -306,74 +42,41 @@
     <div class="developer-and-info-container">
         <!-- Bagian untuk pengembang proyek -->
         <div class="pengembang-container">
-            <div class="pengembang-proyek">
-                Pengembang Proyek
+            <div class="pembimbing">Dosen Pembimbing</div>
+            <div class="developer-names" id="developersList">
+                <!-- Dynamic developer names will be inserted here -->
             </div>
-            <div class="developer-names">
-                <img src="./assets/image/user.png" alt="gambar pengembang" class="project-profil">
-                <span>Nama Pengembang 1</span>
-            </div>    
-            <div class="developer-names">
-                <img src="./assets/image/user.png" alt="gambar pengembang" class="project-profil">
-                <span>Nama Pengembang 2</span>
-            </div>    
-            <div class="developer-names">
-                <img src="./assets/image/user.png" alt="gambar pengembang" class="project-profil">
-                <span>Nama Pengembang 3</span>
+            <div class="pembimbing-container"></div>
+            <div class="pembimbing">Pengembang Proyek</div>
+            <div class="developer-names" id="advisorName">
+                <!-- Dynamic advisor name will be inserted here -->
             </div>
-        <div class="pengembang-container"></div>
-            <div class="pembimbing">
-                Dosen Pembimbing
-            </div>
-            <div class="developer-names">
-                <img src="./assets/image/user.png" alt="gambar pengembang" class="project-profil">
-                <span>Nama Dosen Pembimbing</span>
-            </div>    
         </div>
     
         <!-- Bagian untuk informasi -->
         <div class="informasi-container">
-            <div class="informasi">
-                Informasi:
-            </div>
+            <div class="informasi">Informasi:</div>
             <div class="info-item">
                 <div class="info-icon red-circle"></div>
                 <div class="info-text">
                     <span>Video Promosi: </span>
-                    <a href="https://link-ke-video.com">Tonton Video</a>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon purple-circle"></div>
-                <div class="info-text">
-                    <span>Link Studio Demo: </span>
-                    <a href="https://link-ke-studio-demo.com">Studio Demo</a>
+                    <a href="" id="promoVideoLink">Tonton Video</a>
                 </div>
             </div>
             <div class="info-item">
                 <div class="info-icon pink-circle"></div>
                 <div class="info-text">
                     <span>Link Project: </span>
-                    <a href="https://link-ke-project.com">Lihat Project</a>
+                    <a href="" id="projectLink">Lihat Project</a>
                 </div>
             </div>
 
             <div class="sosial-media-container">
-                <div class="sosial-media">
-                    Sosial Media:
-                </div>
+                <div class="sosial-media">Sosial Media:</div>
                 <div class="icon-sosial">
-                    <a href="mailto:email@domain.com" target="_blank">
-                        <img src="./assets/image/email1.png" alt="Email" class="sosial-icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/profil-linkedin" target="_blank">
-                        <img src="./assets/image/linkedin.png" alt="LinkedIn" class="sosial-icon">
-                    </a>
                 </div>
             </div>
         </div>     
     </div>
-    
-
 </body>
 </html>

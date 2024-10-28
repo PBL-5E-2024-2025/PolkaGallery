@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             projectCard.innerHTML = `
                 <img src="${project.url_image}" alt="Project Image" />
                 <h2>${project.judul}</h2>
-                <p>${project.deskripsi}</p>
-                <p>Jenis: ${project.jenis_project}</p>
-                <button onclick="location.href='${project.link_project}'">Lihat Project</button>
+                <p>Kategori: ${project.jenis_project}</p>
+                <!-- Pass project ID to project.html using URL query parameter -->
+                <button onclick="location.href='project.html?id=${project.id_project}'">Lihat Project</button>
             `;
 
             galleryGrid.appendChild(projectCard);
