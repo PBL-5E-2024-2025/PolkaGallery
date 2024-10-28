@@ -10,7 +10,39 @@
 </head>
 <body>
     <header class="sticky">
-        <!-- ...Header Content... -->
+        <div class="logo-title">
+            <div class="logo">
+                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+            </div>
+            <div class="navbar-title">
+                <span>Polnep <br>Karya</span>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html" title="Home">Home</a></li>
+                <li><a href="./gallery.html" title="Gallery">Gallery</a></li>
+                <li><a href="./contact.html" title="Contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-container">
+            <div class="logos">
+                <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
+                <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
+            </div>
+            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a> 
+            <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
+                <div class="dropdown-content" id="dropdownContent">
+                    <h2 id="username-display">Nama User</h2>
+                    <a href="profil.html" id="cekProfil">Cek Profil</a>
+                    <a href="#" id="kirimProyek">Kirim Proyek</a>
+                    <a href="#" id="logout">Keluar</a>
+                </div>
+            </div>
+                     
+            </div>
+        </div>
     </header>
 
     <main>
@@ -35,6 +67,8 @@
         <div id="gallery-grid" class="project-grid">
             <!-- Cards akan ditambahkan di sini oleh gallery.js -->
         </div>
+
+        <script src="log.js"></script>
     </main>
 </body>
 </html>
