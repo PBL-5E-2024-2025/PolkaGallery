@@ -46,4 +46,8 @@ async function fetchProjects() {
     });
 }
 
+function openEditProjectModal(project) {
+    // Redirect ke halaman edit dengan id_project sebagai query parameter
+    window.location.href = `editpbl.html?id_project=${project.id_project}`;
+}
 
