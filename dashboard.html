@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
@@ -16,7 +15,9 @@
     <header class="sticky">
         <div class="logo-title">
             <div class="logo">
-                <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                <a href="dashboard.html">
+                    <img src="./assets/image/logo_polka.png" alt="Logo Polka">
+                </a>
             </div>
             <div class="navbar-title">
                 <span>olka Gallery Admin</span>
@@ -27,28 +28,20 @@
                 <img src="./assets/image/logo_elektro.png" alt="Logo Elektro" class="logo-elektro">
                 <img src="./assets/image/logo_polnep.png" alt="Logo Polnep" class="logo-polnep">
             </div>
-
+        
+            <!-- Profil Admin dengan Dropdown -->
             <a href="./login.html" class="sign-in" id="signInLink">Sign In</a> 
             <div class="profile-dropdown" id="profileDropdown" style="display: none;">
                 <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
-                <div class="dropdown-content" id="dropdownContent">
-                    <h2 id="username-display">Nama User</h2>
-                    <a href="profil.html" id="cekProfil">Cek Profil</a>
-                    <a href="#" id="logout">Keluar</a>
-                </div>
-            </div>
-        
-            <!-- <div class="profile-container">
-                <div class="profile-dropdown" id="profileDropdown" style="display: none;"></div>
-                <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
                 <div class="dropdown-content" id="dropdown-content">
-                    <h2 id="username-display">Nama User</h2>
-                    <a href="profil.html">Lihat Profil</a>
-                    <a href="login.html" id="logout">Keluar</a>
+                    <h2 id="username-display">Nama User</h2>                    
+                    <a href="profil.html">Profil</a>
+                    <a href="#">Keluar</a>
                 </div>
             </div>
-        </div> -->
+        </div>        
     </header>
+
     <div class="blue-banner"></div>
     <div class="statistics-container">
         <div class="stat-box">

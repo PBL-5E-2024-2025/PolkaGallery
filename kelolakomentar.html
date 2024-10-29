@@ -34,11 +34,13 @@
             </div>
         
             <!-- Profil Admin dengan Dropdown -->
-            <div class="profile-container">
-                <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
+            <a href="./login.html" class="sign-in" id="signInLink">Sign In</a> 
+            <div class="profile-dropdown" id="profileDropdown" style="display: none;">
+                <img src="assets/image/user.png" alt="Profile" class="profile-img" id="profileImg">
                 <div class="dropdown-content" id="dropdown-content">
+                    <h2 id="username-display">Nama User</h2>                    
                     <a href="profil.html">Profil</a>
-                    <a href="login.html">Keluar</a>
+                    <a href="#">Keluar</a>
                 </div>
             </div>
         </div>        
@@ -79,5 +81,6 @@
         }
     </script>
     <script src="./kelolakomen.js"></script>
+    <script src="log.js"></script>
 </body>
 </html>
