@@ -9,6 +9,26 @@
     <script type="module" src="gallery.js" defer></script>
     <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
 </head>
+<style>
+        .search-input, .dropdown, .search-button {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        }
+
+        .search-button {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            
+        }
+
+        .search-button:hover {
+            background-color: #004499;
+        }
+
+</style>
 <body>
     <header class="sticky">
         <div class="logo-title">
@@ -49,21 +69,23 @@
     <main>
         <div class="blue-banner"></div>
 
+        <!-- Search Box Section -->
         <div class="white-box search-box">
-            <h2 class="search-title">Apa Yang Ingin Dicari?</h2>
+            <h2 class="search-title">Apa yang ingin dicari?</h2>
             <form id="searchForm" class="search-form">
                 <div class="filter-group">
                     <select id="kategori" class="dropdown">
                         <option value="">Kategori Project</option>
                         <option value="PBL">PBL</option>
                         <option value="Lomba">Lomba</option>
-                        <option value="TA">TA</option>
+                        <option value="TA">Tugas Akhir</option>
                     </select>
-                    <input type="text" id="namaProject" class="search-input" placeholder="Nama Project">
+                    <input type="text" id="namaProject" class="search-input" placeholder="Nama Proyek">
+                    <button type="submit" class="search-button">Cari Proyek</button>
                 </div>
             </form>
         </div>
-
+        
         <!-- Tambahkan ID untuk gallery-grid agar dikenali di gallery.js -->
         <div id="gallery-grid" class="project-grid">
             <!-- Cards akan ditambahkan di sini oleh gallery.js -->
