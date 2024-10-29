@@ -41,7 +41,6 @@ async function fetchProjects() {
             <td>
                 <button class="edit-button" onclick="openEditProjectModal(${JSON.stringify(project)})">Edit</button>
                 <button class="delete-button" onclick="deleteProject(${project.id_project})">Hapus</button>
-                <button class="post-button" onclick="postProject(${project.id_project})">Post</button>
             </td>
         `;
         
@@ -49,36 +48,3 @@ async function fetchProjects() {
     });
 }
 
-async function addProject() {
-    const projectName = document.getElementById('projectName').value;
-    const projectDescription = document.getElementById('projectDescription').value;
-    const projectYear = document.getElementById('projectYear').value;
-    const projectType = document.getElementById('projectType').value;
-
-    const { data, error } = await supabaseClient
-        .from('project')
-        .insert([{ judul: projectName, deskripsi: projectDescription, tahun: projectYear, jenis_project: projectType, id_tim: teamId }]);
-
-    if (error) {
-        console.error('Error adding project:', error);
-    } else {
-        fetchProjects();
-    }
-}
-
-async function deleteProject(id) {
-    const { data, error } = await supabaseClient
-        .from('project')
-        .delete()
-        .eq('id_project', id);
-    
-    if (error) {
-        console.error('Error deleting project:', error);
-    } else {
-        fetchProjects();
-    }
-}
-
-async function editProject(id) {
-    // Implement the logic to edit a project here
-}

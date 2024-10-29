@@ -8,10 +8,26 @@
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
     <style>
         main {
             padding-top: 20px; /* Adjust this value based on your header's height */
+        }
+
+        .edit-button {
+            background-color: #4CAF50; /* Hijau */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Merah */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -37,8 +53,8 @@
             <div class="profile-container">
                 <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
                 <div class="dropdown-content" id="dropdown-content">
-                    <a href="#">Profil</a>
-                    <a href="#">Keluar</a>
+                    <a href="profil.html">Profil</a>
+                    <a href="login.html">Keluar</a>
                 </div>
             </div>
         </div>        

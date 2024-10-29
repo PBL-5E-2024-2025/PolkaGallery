@@ -9,10 +9,26 @@
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
     <style>
         main {
             padding-top: 20px; /* Adjust this value based on your header's height */
+        }
+
+        .edit-button {
+            background-color: #4CAF50; /* Hijau */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f44336; /* Merah */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -38,8 +54,8 @@
             <div class="profile-container">
                 <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
                 <div class="dropdown-content" id="dropdown-content">
-                    <a href="#">Profil</a>
-                    <a href="#">Keluar</a>
+                    <a href="profil.html">Profil</a>
+                    <a href="login.html">Keluar</a>
                 </div>
             </div>
         </div>
@@ -72,21 +88,6 @@
             </tbody>
         </table>
     </main>
-
-    <!-- Modal untuk menambahkan proyek -->
-    <div id="addProjectModal" style="display:none;">
-        <h3>Tambah Lomba</h3>
-        <label for="projectName">Nama Proyek:</label>
-        <input type="text" id="projectName" placeholder="Nama Proyek">
-        <label for="projectDescription">Deskripsi:</label>
-        <input type="text" id="projectDescription" placeholder="Deskripsi">
-        <label for="startDate">Tanggal Mulai:</label>
-        <input type="date" id="startDate">
-        <label for="endDate">Tanggal Selesai:</label>
-        <input type="date" id="endDate">
-        <button class="button" onclick="addProject()">Simpan</button>
-        <button class="button" onclick="closeAddProjectModal()">Batal</button>
-    </div>
 
     <script>
         // Ambil elemen profil dan dropdown

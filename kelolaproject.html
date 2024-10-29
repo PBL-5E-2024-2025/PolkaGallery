@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./assets/css/styledashboard.css">
     <link rel="icon" type="image/x-icon" href="./assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="icon" type="i" href="/assets/image/logo_polka.ico">
+    <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
     <style>
         main {
             padding-top: 20px;
@@ -24,14 +24,6 @@
 
         .delete-button {
             background-color: #f44336; /* Merah */
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-
-        .post-button {
-            background-color: #008CBA; /* Biru */
             color: white;
             border: none;
             padding: 5px 10px;
@@ -89,14 +81,14 @@
                 <img src="./assets/image/user.png" alt="Admin Profile" class="profile-pic" id="profile-pic">
                 <div class="dropdown-content" id="dropdown-content">
                     <a href="profil.html">Profil</a>
-                    <a href="#">Keluar</a>
+                    <a href="login.html">Keluar</a>
                 </div>
             </div>
         </div>        
     </header>
 
     <main>
-        <h2>Kelola Proyek</h2>        
+        <h2>Kelola Proyek PBL</h2>        
         <table>
             <thead>
                 <tr>
@@ -120,46 +112,25 @@
         </table>
     </main>
 
-    <!-- Modal untuk menambahkan proyek -->
-    <div id="addProjectModal" class="modal">
-        <div class="modal-content">
-            <h3>Tambah Proyek</h3>
-            <label for="projectName">Nama Proyek:</label>
-            <input type="text" id="projectName" placeholder="Nama Proyek">
-            <label for="projectDescription">Deskripsi:</label>
-            <input type="text" id="projectDescription" placeholder="Deskripsi">
-            <label for="projectYear">Tahun:</label>
-            <input type="text" id="projectYear" placeholder="Tahun">
-            <label for="projectType">Jenis Proyek:</label>
-            <input type="text" id="projectType" placeholder="Jenis Proyek">
-            <label for="teamId">ID Tim:</label>
-            <input type="text" id="teamId" placeholder="ID Tim">
-            <button class="button" onclick="addProject()">Simpan</button>
-            <button class="button" onclick="closeAddProjectModal()">Batal</button>
-        </div>
-    </div>
+    <script>
+        // Ambil elemen profil dan dropdown
+        const profilePic = document.getElementById('profile-pic');
+        const dropdownContent = document.getElementById('dropdown-content');
 
-    <!-- Modal untuk mengedit proyek -->
-    <div id="editProjectModal" class="modal">
-        <div class="modal-content">
-            <h3>Edit Proyek</h3>
-            <input type="hidden" id="editProjectId">
-            <label for="editProjectName">Nama Proyek:</label>
-            <input type="text" id="editProjectName" placeholder="Nama Proyek">
-            <label for="editProjectDescription">Deskripsi:</label>
-            <input type="text" id="editProjectDescription" placeholder="Deskripsi">
-            <label for="editProjectYear">Tahun:</label>
-            <input type="text" id="editProjectYear" placeholder="Tahun">
-            <label for="editProjectType">Jenis Proyek:</label>
-            <input type="text" id="editProjectType" placeholder="Jenis Proyek">
-            <label for="editTeamId">ID Tim:</label>
-            <input type="text" id="editTeamId" placeholder="ID Tim">
-            <button class="button" onclick="saveEditedProject()">Simpan</button>
-            <button class="button" onclick="closeEditProjectModal()">Batal</button>
-        </div>
-    </div>
+        // Event listener untuk toggle dropdown saat gambar profil diklik
+        profilePic.addEventListener('click', function() {
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Event listener untuk menutup dropdown saat klik di luar elemen dropdown
+        window.onclick = function(event) {
+            if (!event.target.matches('#profile-pic')) {
+                dropdownContent.style.display = 'none';
+            }
+        }
+    </script>
+    
 
     <script src="./kelolaproject.js"></script>
-
 </body>
 </html>

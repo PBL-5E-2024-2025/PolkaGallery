@@ -39,7 +39,6 @@ async function fetchProjects() {
             <td>
                 <button class="edit-button" onclick="openEditProjectModal(${JSON.stringify(project)})">Edit</button>
                 <button class="delete-button" onclick="deleteProject(${project.id_project})">Hapus</button>
-                <button class="post-button" onclick="postProject(${project.id_project})">Post</button>
             </td>
         `;
         
@@ -47,83 +46,4 @@ async function fetchProjects() {
     });
 }
 
-async function addProject() {
-    const projectName = document.getElementById('projectName').value;
-    const projectDescription = document.getElementById('projectDescription').value;
-    const projectYear = document.getElementById('projectYear').value;
-    const projectType = document.getElementById('projectType').value;
-    const teamId = document.getElementById('teamId').value;
 
-    const { data, error } = await supabaseClient
-        .from('project')
-        .insert([{ 
-            judul: projectName, 
-            deskripsi: projectDescription, 
-            tahun: projectYear, 
-            jenis_project: projectType,  
-        }]);
-
-    if (error) {
-        console.error('Error adding project:', error);
-    } else {
-        fetchProjects();
-    }
-}
-
-async function deleteProject(id) {
-    const { data, error } = await supabaseClient
-        .from('project')
-        .delete()
-        .eq('id_project', id);
-    
-    if (error) {
-        console.error('Error deleting project:', error);
-    } else {
-        fetchProjects();
-    }
-}
-
-async function saveEditedProject() {
-    const id = document.getElementById('editProjectId').value;
-    const name = document.getElementById('editProjectName').value;
-    const description = document.getElementById('editProjectDescription').value;
-    const year = document.getElementById('editProjectYear').value;
-    const type = document.getElementById('editProjectType').value;
-    const teamId = document.getElementById('editTeamId').value;
-
-    const { data, error } = await supabaseClient
-        .from('project')
-        .update({ 
-            judul: name, 
-            deskripsi: description, 
-            tahun: year, 
-            jenis_project: type, 
-        })
-        .eq('id_project', id);
-
-    if (error) {
-        console.error('Error updating project:', error);
-    } else {
-        fetchProjects();
-        closeEditProjectModal();
-    }
-}
-
-function openEditProjectModal(project) {
-    document.getElementById('editProjectId').value = project.id_project;
-    document.getElementById('editProjectName').value = project.judul;
-    document.getElementById('editProjectDescription').value = project.deskripsi;
-    document.getElementById('editProjectYear').value = project.tahun;
-    document.getElementById('editProjectType').value = project.jenis_project;
-
-    document.getElementById('editProjectModal').style.display = 'block';
-}
-
-function closeEditProjectModal() {
-    document.getElementById('editProjectModal').style.display = 'none';
-}
-
-function postProject(id) {
-    // Implementasikan fungsionalitas posting proyek di sini
-    alert('Posting project akan ditambahkan nanti.');
-}
