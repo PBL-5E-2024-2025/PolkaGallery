@@ -807,3 +807,137 @@ main {
     text-align: center;
     margin-top: 20px;
 }
+
+        /* Tombol Kirim Proyek */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Popup Content */
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Warning Icon */
+        .popup-warning-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Close Button */
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        
+        .kirim-btn {
+            background-color: #0C3790;
+            color: white;
+            padding: 10px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .kirim-btn:hover {
+            background-color: #002f70;
+        }
+
+        /* Popup container */
+        .popup-container {
+            display: none; /* Popup tersembunyi secara default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Background transparan hitam */
+        }
+
+        /* Popup content */
+        .popup-content {
+            background-color: #ffffff;
+            margin: 15% auto; /* Memposisikan popup di tengah */
+            padding: 20px;
+            border: 1px solid #0C3790;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Tombol Close */
+        .close-popup {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            color: #000;
+        }
+
+        /* Pilihan proyek */
+        .project-options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        /* Styling untuk kotak proyek */
+        .project-box {
+            background-color: #0C3790;
+            border-radius: 10px;
+            color: #ffffff;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05); /* Animasi zoom saat hover */
+        }
+
+        /* Styling untuk gambar ikon di dalam kotak proyek */
+        .project-icon {
+            width: 50px; /* Ukuran lebar gambar */
+            height: 50px; /* Ukuran tinggi gambar */
+            margin-bottom: 10px; /* Jarak antara gambar dan teks */
+        }
+
+        /* Styling untuk teks dalam kotak proyek */
+        .project-box p {
+            font-size: 16px;
+            margin: 0;
+        }

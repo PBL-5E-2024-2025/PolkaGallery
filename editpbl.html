@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/addproject.css">
+    <link rel="icon" type="image/x-icon" href="/assets/image/logo_polka.ico">
+    <title>Edit PBL</title>
+    <style>
+        /* Tambahkan gaya khusus untuk tombol simpan */
+        .submit-button {
+            background-color: #0a4e9b; /* Warna biru tua seperti tabel */
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #083d79; /* Warna biru tua lebih gelap untuk efek hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Persegi panjang biru -->
+    <div class="blue-banner"></div>
+
+    <!-- Container putih di atas persegi biru -->
+    <div class="white-box">
+        <h2>Proyek PBL</h2>
+    </div>
+
+    <!-- Form submission -->
+    <div class="container">
+        <form id="projectForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="judul">Judul</label>
+                <input type="text" id="judul" name="judul" placeholder="Nama Proyek" required>
+            </div>
+
+            <div class="form-group">
+                <label for="deskripsi">Deskripsi</label>
+                <textarea id="deskripsi" name="deskripsi" rows="4" placeholder="Deskripsi proyek" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="nama_mhs">Pengembang Project</label>
+                <input type="text" id="nama_mhs" name="nama_mhs" placeholder="Nama Pengembang" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dosen">Dosen Pembimbing</label>
+                <input type="text" id="dosen" name="dosen" placeholder="Dosen Pembimbing" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tools">Tools</label>
+                <input type="text" id="tools" name="tools" placeholder="Tools yang digunakan" required>
+            </div>
+
+            <div class="form-group">
+                <label for="tahun">Tanggal</label>
+                <input type="date" id="tahun" name="tahun" required>
+            </div>
+
+            <!-- Ubah Kategori menjadi default "PBL" dan tidak bisa diubah -->
+            <div class="form-group">
+                <label for="jenis_project">Kategori</label>
+                <input type="text" id="jenis_project" name="jenis_project" value="PBL" readonly required>
+            </div>
+
+            <div class="form-group">
+                <label for="linkProject">Link Project</label>
+                <input type="text" id="linkProject" name="linkProject" placeholder="Link Project" required>
+            </div>
+
+            <div class="form-group">
+                <label for="linkVideo">Link Video</label>
+                <input type="text" id="linkVideo" name="linkVideo" placeholder="Link Video Promosi" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gambar">Pilih Gambar</label>
+                <input type="file" id="gambar" name="gambar" accept="image/*" required>
+            </div>
+
+            <div class="form-group">
+                <label for="kontak">Kontak Mahasiswa</label>
+                <input type="text" id="kontak" name="kontak" placeholder="Email/LinkedIn" required>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="submit-button">Simpan</button>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    
+        const supabaseUrl = 'https://ctuuidmssgwoibomcsem.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN0dXVpZG1zc2d3b2lib21jc2VtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjY3MTcwODEsImV4cCI6MjA0MjI5MzA4MX0.Z9vz877mHKT1nHlS40HMy-95TLUxc9YsHso3U_xhUL0';
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+    
+        const projectForm = document.getElementById('projectForm');
+        const params = new URLSearchParams(window.location.search);
+        const id_project = params.get('id_project');
+    
+        async function fetchProjectDetails() {
+            if (id_project) {
+                const { data, error } = await supabaseClient
+                    .from('project')
+                    .select('*')
+                    .eq('id_project', id_project)
+                    .single();
+    
+                if (error) {
+                    console.error('Error fetching project:', error);
+                    alert('Gagal memuat data proyek');
+                    return;
+                }
+    
+                // Isi form dengan data proyek yang diambil
+                document.getElementById('judul').value = data.judul;
+                document.getElementById('deskripsi').value = data.deskripsi;
+                document.getElementById('nama_mhs').value = data.nama_mhs;
+                document.getElementById('dosen').value = data.dosen;
+                document.getElementById('tools').value = data.tools;
+                document.getElementById('tahun').value = data.tahun;
+                document.getElementById('linkProject').value = data.link_project;
+                document.getElementById('linkVideo').value = data.link_video;
+                document.getElementById('kontak').value = data.kontak_mahasiswa;
+            }
+        }
+    
+        fetchProjectDetails();
+    
+        projectForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+    
+            const formData = new FormData(projectForm);
+            const judul = formData.get('judul');
+            const deskripsi = formData.get('deskripsi');
+            const nama_mhs = formData.get('nama_mhs');
+            const dosen = formData.get('dosen');
+            const tools = formData.get('tools');
+            const tahun = formData.get('tahun');
+            const link_project = formData.get('linkProject');
+            const link_video = formData.get('linkVideo');
+            const kontak_mahasiswa = formData.get('kontak');
+            const gambar = formData.get('gambar'); 
+    
+            try {
+                let imageUrl;
+    
+                if (gambar.size > 0) {
+                    const { data: uploadData, error: uploadError } = await supabaseClient
+                        .storage
+                        .from('project_images')
+                        .upload(`images/${judul}-${Date.now()}.jpg`, gambar);
+    
+                    if (uploadError) throw new Error('Error mengunggah gambar: ' + uploadError.message);
+    
+                    imageUrl = `${supabaseUrl}/storage/v1/object/public/project_images/${uploadData.path}`;
+                }
+    
+                const { error: updateError } = await supabaseClient
+                    .from('project')
+                    .update({
+                        judul,
+                        deskripsi,
+                        nama_mhs,
+                        dosen,
+                        tools,
+                        tahun,
+                        link_project,
+                        link_video,
+                        kontak_mahasiswa,
+                        ...(imageUrl && { url_image: imageUrl })
+                    })
+                    .eq('id_project', id_project);
+    
+                if (updateError) throw new Error('Error memperbarui proyek: ' + updateError.message);
+    
+                alert('Proyek berhasil diperbarui!');
+                window.location.href = 'kelolaproject.html';
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+    
+</body>
+</html>
