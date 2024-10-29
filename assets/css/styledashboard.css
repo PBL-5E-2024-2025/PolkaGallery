@@ -322,3 +322,48 @@ tr:hover {
     background-color: #0C3790; /* Change background on hover */
     color: white; /* Change text color on hover */
 }
+
+.button-add {
+    font-size: 18px; 
+    padding: 15px 20px;
+    background-color: #032790;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Untuk menghilangkan garis bawah jika menggunakan <a> */
+    display: inline-block; /* Supaya tampil seperti tombol */
+    text-align: center;
+}
+
+.button-add:hover {
+    background-color: rgb(48, 10, 216);
+    color: #ffffff;
+}
+
+.edit-button {
+    background-color: #4CAF50; /* Hijau */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.edit-button:hover {
+    background-color: #1a7a1d;
+}
+
+.delete-button {
+    background-color: #f44336; /* Merah */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #bd1c10;
+}

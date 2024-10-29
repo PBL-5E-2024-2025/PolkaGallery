@@ -36,8 +36,11 @@ async function fetchProjects() {
             <td><a href="${project.link_video}" target="_blank">Link Video</a></td>
             <td>${project.kontak_mahasiswa}</td>
             <td><img src="${project.url_image}" alt="Gambar Proyek" width="50"></td>
-            <td><button onclick="editProject(${project.id_project})">Edit</button>
-                <button onclick="deleteProject(${project.id_project})">Hapus</button>
+            <td>
+                <button class="edit-button" onclick="openEditProjectModal(${JSON.stringify(project)})">Edit</button>
+                <button class="delete-button" onclick="deleteProject(${project.id_project})">Hapus</button>
+            </td>
+            
         `;
         
         tableBody.appendChild(row);
