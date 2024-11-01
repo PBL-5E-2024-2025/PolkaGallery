@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./assets/image/logo_polka.ico">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="project.js"></script>
+
     <style>
         /* Tombol Kirim Proyek */
         .popup-overlay {
@@ -213,85 +216,10 @@
                 <a href="./gallery.html" class="button"><strong>Lihat Selengkapnya</strong></a>
             </div>
         </section>        
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
-                    <span class="project-category">Aplikasi</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
-                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
-                    <p class="project-author">By Rizky Puspita Sari</p>
-                    <div class="project-actions">
-                        <div class="project-likes">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                            </svg>
-                            <span>1,2rb</span>
-                        </div>
-                        <div class="project-save">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
-                            </svg>
-                        </div>
-                    </div>
-                    <a href="#" class="project-link">Lihat Project</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
-                    <span class="project-category">Aplikasi</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
-                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
-                    <p class="project-author">By Rizky Puspita Sari</p>
-                    <div class="project-actions">
-                        <div class="project-likes">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                            </svg>
-                            <span>1,2rb</span>
-                        </div>
-                        <div class="project-save">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
-                            </svg>
-                        </div>
-                    </div>
-                    <a href="#" class="project-link">Lihat Project</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="assets/image/project.png" alt="Project Image" class="project-img">
-                    <span class="project-category">Aplikasi</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Aplikasi SiBaper Mobile</h3>
-                    <p class="project-description">aplikasi dibuat menurut sxabu jubcubeub aplikasi dibuat menurut sxabu jubcubeub</p>
-                    <p class="project-author">By Rizky Puspita Sari</p>
-                    <div class="project-actions">
-                        <div class="project-likes">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="like-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-                            </svg>
-                            <span>1,2rb</span>
-                        </div>
-                        <div class="project-save">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="save-icon">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19l7-7 7 7" />
-                            </svg>
-                        </div>
-                    </div>
-                    <a href="#" class="project-link">Lihat Project</a>
-                </div>
-            </div>
+        <div id="gallery-grid" class="project-grid">
+            <!-- Cards akan ditambahkan di sini oleh gallery.js -->
         </div>
+
         <!-- New Section -->
         <section class="submit-container">
             <div class="submit-content">
@@ -317,6 +245,10 @@
               <p>Pastikan untuk login terlebih dahulu untuk mengirim project dan karya.</p>
             </div>
           </div>
+
+
+    <!-- Include your custom JS file -->
+    <script src="home.js"></script>
 
           <script>
             const kirimProyekButton = document.getElementById('kirimProyekButton');
