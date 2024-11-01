@@ -8,9 +8,10 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Function to fetch and display projects
     async function loadProjects(filters = {}) {
         let { data: projects, error } = await supabaseClient
-        .from('project')
-        .select('judul, url_image, jenis_project')
-        .limit(4);
+            .from('project')
+            .select('*')
+            .limit(4)
+            .order('id_project', { ascending: false });
 
         if (error) {
             console.error('Error fetching projects:', error.message);
@@ -48,4 +49,16 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Load initial projects when the page loads
     loadProjects();
+
+    // Handle search form submission
+    searchForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const filters = {
+            kategori: kategoriSelect.value,
+            namaProject: namaProjectInput.value
+        };
+
+        loadProjects(filters);
+    });
 });
