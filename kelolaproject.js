@@ -37,7 +37,7 @@ async function fetchProjects() {
             <td>${project.kontak_mahasiswa}</td>
             <td><img src="${project.url_image}" alt="Gambar Proyek" width="50"></td>
             <td>
-                <button class="edit-button" onclick="openEditProjectModal(${JSON.stringify(project)})">Edit</button>
+                <button class="edit-button" onclick="openEditProjectModal(${project.id_project})">Edit</button>
                 <button class="delete-button" onclick="deleteProject(${project.id_project})">Hapus</button>
             </td>
         `;
@@ -46,8 +46,7 @@ async function fetchProjects() {
     });
 }
 
-function openEditProjectModal(project) {
+function openEditProjectModal(id_project) {
     // Redirect ke halaman edit dengan id_project sebagai query parameter
-    window.location.href = `editpbl.html?id_project=${project.id_project}`;
+    window.location.href = `editpbl.html?id_project=${id_project}`;
 }
-
