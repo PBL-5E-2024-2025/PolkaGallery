@@ -50,3 +50,35 @@ function openEditProjectModal(id_project) {
     // Redirect ke halaman edit dengan id_project sebagai query parameter
     window.location.href = `editpbl.html?id_project=${id_project}`;
 }
+
+async function deleteProject(id_project) {
+    const confirmation = confirm("Apakah Anda yakin ingin menghapus project ini?");
+    if (!confirmation) {
+        return;
+    }
+
+    try {
+        // Attempt to delete the project
+        const { data, error } = await supabaseClient
+            .from('project')
+            .delete()
+            .eq('id_project', id_project);
+
+        // Log entire response for debugging purposes
+        console.log("Delete response data:", data);
+        console.log("Delete response error:", error);
+
+        if (error) {
+            console.error('Supabase delete error:', error.message);
+            alert(`Gagal menghapus project. Error: ${error.message}`);
+        } else if (!data || data.length === 0) {
+            alert('Project tidak ditemukan atau sudah dihapus.');
+        } else {
+            alert('Project berhasil dihapus.');
+            fetchProjects(); // Refresh list of projects
+        }
+    } catch (err) {
+        console.error('Unexpected error:', err);
+        alert(`Terjadi kesalahan tidak terduga: ${err.message}`);
+    }
+}
