@@ -51,35 +51,45 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Link Project & Video
     if (project.link_project) {
-        document.querySelector('.info-item a').href = project.link_project;
+        document.getElementById('projectLink').href = project.link_project;
     }
 
     if (project.link_video) {
-        document.querySelector('.info-item a').href = project.link_video;
+        document.getElementById('promoVideoLink').href = project.link_video;
     }
 
-    // Sosial Media
+    // Kontak Sosial Media Mahasiswa
     const socialMediaContainer = document.querySelector('.icon-sosial');
-    const socialMediaLinks = JSON.parse(project.social_media || '[]'); // Assuming social_media is stored as a JSON string in Supabase
+    if (project.kontak_mahasiswa) { // Menggunakan kolom 'kontak_mahasiswa' dari database
+        const kontakList = project.kontak_mahasiswa.split(',');
+        kontakList.forEach(kontak => {
+            const kontakTrimmed = kontak.trim();
+            let link = '';
+            let iconClass = '';
 
-    socialMediaLinks.forEach(link => {
-        const icon = document.createElement('a');
-        icon.href = link.url;
-        icon.target = "_blank";
-        let platform = '';
+            // Pengecekan dengan regex untuk berbagai format URL Instagram
+            const instagramRegex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/[A-Za-z0-9._-]+/;
+            if (instagramRegex.test(kontakTrimmed)) {
+                // Jika URL Instagram
+                link = kontakTrimmed;
+                iconClass = 'fab fa-instagram';
+            } else if (kontakTrimmed.startsWith('mailto:')) {
+                // Jika Email dengan prefix mailto:
+                link = kontakTrimmed;
+                iconClass = 'fas fa-envelope';
+            } else if (kontakTrimmed.includes('@')) {
+                // Jika hanya email tanpa prefix mailto:
+                link = `mailto:${kontakTrimmed}`;
+                iconClass = 'fas fa-envelope';
+            }
 
-        if (link.url.includes('instagram.com')) {
-            platform = 'instagram.png';
-        } else if (link.url.includes('linkedin.com')) {
-            platform = 'linkedin.png';
-        } else if (link.url.includes('facebook.com')) {
-            platform = 'facebook.png';
-        } else {
-            platform = 'generic_social.png'; // fallback icon for other platforms
-        }
-
-        icon.innerHTML = `<img src="./assets/image/${platform}" alt="${link.platform}" class="sosial-icon">`;
-        socialMediaContainer.appendChild(icon);
-    });
+            if (link) {
+                const socialLink = document.createElement('a');
+                socialLink.href = link;
+                socialLink.target = '_blank';
+                socialLink.innerHTML = `<i class="${iconClass}"></i>`;
+                socialMediaContainer.appendChild(socialLink);
+            }
+        });
+    }
 });
-

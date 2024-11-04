@@ -233,3 +233,15 @@
             width: 40px;
             height: 40px;
         }
+
+        .icon-sosial a {
+            margin: 0 10px;
+            color: #000;
+            font-size: 24px;
+            text-decoration: none;
+        }
+        
+        .icon-sosial a:hover {
+            color: #007bff;
+        }
+        
