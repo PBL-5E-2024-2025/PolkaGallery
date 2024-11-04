@@ -112,6 +112,7 @@
                     // Simpan data user ke session storage
                     sessionStorage.setItem('isLoggedIn', 'true');
                     sessionStorage.setItem('username', data[0].username);
+                    sessionStorage.setItem('userId', data[0].id_user);
                     sessionStorage.setItem('profileImage', data[0].profile_image || 'assets/image/user.png');
 
                     // Redirect ke halaman yang sesuai berdasarkan role

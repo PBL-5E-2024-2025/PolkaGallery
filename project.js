@@ -82,3 +82,4 @@ document.addEventListener('DOMContentLoaded', async function () {
         socialMediaContainer.appendChild(icon);
     });
 });
+
